@@ -1,0 +1,6 @@
+---
+- name: Starting httpd service  
+  service: name=httpd state=started enabled=yes
+
+- name: Start mysqld service
+  service: name=mysqld state=started enabled=yes

@@ -1,0 +1,8 @@
+---
+- name: install mysql client and server
+  yum: name=mysql-server state=present
+  yum: name=mysql state=present
+
+- name: Set root password for mysql
+  mysql_user: name=root password=root123 host=localhost
+  mysql_user: name=lezottt password=root123 host=* priv=*.*:ALL,GRANT state=present

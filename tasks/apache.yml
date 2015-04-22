@@ -1,0 +1,10 @@
+---
+- name: install httpd
+  yum: name=httpd state=present
+  
+- name: Copy across new virtual host
+  template: 
+    src=templates/httpd.conf.j2 
+    dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - reload apache

@@ -1,0 +1,54 @@
+---
+- name: Download php source
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  get_url:
+    url="http://php.net/distributions/php-{{ php_source }}.tar.gz"
+    dest="/tmp"
+  register: new_archive
+
+- name: Unarchive php source
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  unarchive:
+    src="/tmp/php-{{ php_source }}.tar.gz"
+    dest="{{ build_root }}"
+    copy=no
+  when: new_archive|changed
+  
+- name: install httpd-devel
+  yum: name=httpd-devel state=present
+  
+- name: install libxml-devel
+  yum: name=libxml-devel state=present
+  
+- name: install openssl-devel
+  yum: name=openssl-devel state=present
+  
+- name: install libcurl-devel
+  yum: name=libcurl-devel state=present
+  
+- name: install libcurl-devel
+  yum: name=libcurl-devel state=present
+  
+- name: install libpng-devel
+  yum: name=libpng-devel state=present
+  
+- name: install libjpeg-devel
+  yum: name=libjpeg-devel state=present
+  
+- name: install freetype-devel
+  yum: name=freetype-devel state=present
+  
+- name: install libmcrypt-devel
+  yum: name=libmcrypt-devel state=present
+  
+- name: install readline-devel
+  yum: name=readline-devel state=present
+  
+- name: install libtidy-devel
+  yum: name=libtidy-devel state=present
+  
+- name: install libxslt-devel
+  yum: name=libxslt-devel state=present
+    
