@@ -1,0 +1,23 @@
+---
+- name: Download phpMyAdmin
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  get_url:
+    url="http://iweb.dl.sourceforge.net/project/phpmyadmin/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
+    dest="/tmp"
+  register: new_archive
+
+- name: Unarchive phpMyAdmin
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  unarchive:
+    src="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
+    dest="{{ document_root }}"
+    copy=no
+  when: new_archive|changed
+
+- name: Create phpMyAdmin link to version
+  file: src="{{ document_root }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages" dest="{{ document_root }}/phpMyAdmin" state=link
+
+- name: Removing phpMyAdmin archive file
+  file: path="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz" state=absent

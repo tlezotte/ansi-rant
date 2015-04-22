@@ -1,0 +1,23 @@
+---
+- name: Download ElasticSearch
+  sudo: yes
+  #sudo_user: "vagrant"
+  get_url:
+    url="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-{{ es_version }}.tar.gz"
+    dest="/tmp"
+  register: new_archive
+
+- name: Unarchive ElasticSearch
+  sudo: yes
+  #sudo_user: "vagrant"
+  unarchive:
+    src="/tmp/elasticsearch-{{ es_version }}.tar.gz"
+    dest="{{ vagrant_share }}/{{ somapp_user }}"
+    copy=no
+  when: new_archive|changed
+
+- name: Create ElasticSearch link to version
+  file: src="{{ vagrant_share }}/{{ somapp_user }}/elasticsearch-{{ es_version }}" dest="{{ vagrant_share }}/{{ somapp_user }}/elasticsearch" state=link
+  
+- name: Removing ElasticSearch archive file
+  file: path="/tmp/elasticsearch-{{ es_version }}.tar.gz" state=absent

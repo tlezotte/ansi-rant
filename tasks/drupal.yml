@@ -1,0 +1,23 @@
+---
+- name: Download Drupal
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  get_url:
+    url="http://ftp.drupal.org/files/projects/drupal-{{ drupal_version }}.tar.gz"
+    dest="/tmp"
+  register: new_archive
+
+- name: Unarchive Drupal
+  sudo: yes
+  #sudo_user: "{{ deploy_user }}"
+  unarchive:
+    src="/tmp/drupal-{{ drupal_version }}.tar.gz"
+    dest="{{ document_root }}"
+    copy=no
+  when: new_archive|changed
+
+- name: Create Drupal link to version
+  file: src="{{ document_root }}/drupal-{{ drupal_version }}" dest="{{ document_root }}/drupal" state=link
+
+- name: Removing Drupal archive file
+  file: path="/tmp/drupal-{{ drupal_version }}.tar.gz" state=absent

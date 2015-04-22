@@ -1,0 +1,6 @@
+---
+- name: install varnish
+  yum: name=varnish state=present
+
+- name: start varnish
+  service: name=varnish state=started enabled=yes
