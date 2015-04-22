@@ -1,0 +1,13 @@
+---
+- name: installing epel
+  yum: name=epel-release state=present
+  
+- name: installing libselinux-python
+  yum: name=libselinux-python state=present
+  
+- name: installing ansible
+  yum: name=ansible state=present
+  
+# required to run mysql ansible commands  
+- name: installing MySQL-python
+  yum: name=MySQL-python state=present
