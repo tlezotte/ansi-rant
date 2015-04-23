@@ -4,19 +4,21 @@
 - hosts: all
   sudo: true
   vars:
-    server_name: c6.ansi-rant.com
     vagrant_share: /vagrant
     sites_share: /sites
     document_root: /vagrant/somapp/www
     drupal_version: 7.36
     phpmyadmin_version: 4.4.2
     es_version: 1.5.1
-    somapp_user: somapp
-    somapp_group: somapp
-    default_password: vu84dFR1U8cM6
+    default_user: somapp
+    default_group: somapp
+    default_password: andwFlxe77c2A
+    default_password_plain: vagrant
   handlers:
-    - name: reload apache
+    - name: restart apache
       service: name=httpd state=reloaded
+    - name: restart mysqld
+      service: name=mysqld state=reloaded
   pre_tasks:
     - include: tasks/required.yml
     - include: tasks/addusers.yml
