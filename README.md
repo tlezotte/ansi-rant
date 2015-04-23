@@ -15,6 +15,7 @@
   
 ### What does __ansible__ do?
 Ansible will setup your new VM the same every time. Ansi-rant installs and setup the following.  
+  
 1. Adds a default user
 2. Installs and configures Apache
 3. Installs PHP
