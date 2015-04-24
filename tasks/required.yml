@@ -1,8 +1,8 @@
 ---
 - name: Installing required packages
   yum: name=epel-release state=present
-    with_items:
-      - epel-release
-      - libselinux-python
-      - ansible
-      - MySQL-python
+  with_items:
+    - epel-release
+    - libselinux-python
+    - ansible
+    - MySQL-python
