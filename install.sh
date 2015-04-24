@@ -82,6 +82,9 @@ brew cleanup
 mv ansi-rant $OS
 cd $OS
 
+# Remove git
+rm -rf .git
+
 # Start installing
 vagrant up
 
