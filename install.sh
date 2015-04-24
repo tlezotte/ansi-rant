@@ -52,8 +52,6 @@ then
     exit
 fi
 
-sudo echo "$boxip $boxhostname" >> /etc/hosts
-
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
@@ -82,8 +80,9 @@ brew cleanup
 mv ansi-rant $OS
 cd $OS
 
-# Remove git
-rm -rf .git
+# Let the system know about your options
+sudo echo "$boxip $boxhostname" >> /etc/hosts
+sed -i "s/<change>.vagrant.com/$boxhostname/" playbook.yml
 
 # Start installing
 vagrant up
