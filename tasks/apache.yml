@@ -6,5 +6,6 @@
   template: 
     src=templates/httpd.conf.j2 
     dest=/etc/httpd/conf/httpd.conf
-  notify:
-    - reload apache
+
+- name: Start apache service
+  service: name=httpd state=reloaded
