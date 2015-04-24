@@ -4,7 +4,7 @@
 - hosts: all
   sudo: true
   vars:
-    server_name: <change>.vagrant.com
+    server_name: change.vagrant.com
     vagrant_share: /vagrant
     sites_share: /sites
     document_root: /vagrant/somapp/www
