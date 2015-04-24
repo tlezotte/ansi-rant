@@ -1,14 +1,14 @@
 ---
 # TODO: msg: Syntax error on line 292 of /etc/httpd/conf/httpd.conf:
 # TODO: DocumentRoot must be a directory
-- name: install mysql server
-  yum: name=mysql-server state=present
+- name: Installing mysql client and server
+  yum: name={{ item }} state=present
+  with_items:
+    - mysql-server
+    - mysql
 
 - name: Start mysqld service
   service: name=mysqld state=reloaded
-
-- name: install mysql client
-  yum: name=mysql state=present
 
 - name: Set root password for mysql
   mysql_user: name=root password=vagrant host=localhost
