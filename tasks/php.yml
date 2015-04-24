@@ -1,30 +1,44 @@
 ---
 - name: install php
-  yum: name=php state=present
-  
-- name: install php-gd
-  yum: name=php-gd state=present
-  
-- name: install php-ldap
-  yum: name=php-ldap state=present
-  
-- name: install php-mbstring
-  yum: name=php-mbstring state=present
-  
-- name: install php-mysql
-  yum: name=php-mysql state=present
-  
-- name: install php-pdo
-  yum: name=php-pdo state=present
-  
-- name: install php-pear
-  yum: name=php-pear state=present
-  
-- name: install php-xml
-  yum: name=php-xml state=present
-  
-- name: install php-xmlrpc
-  yum: name=php-xmlrpc state=present
-  
-- name: install php-pecl-memcache
-  yum: name=php-pecl-memcache state=present
+  yum: name={{ item }} state=present
+  with_items:
+    - php
+    - php-gd
+    - php-ldap
+    - php-mbstring
+    - php-mysql
+    - php-pdo
+    - php-pear
+    - php-xml
+    - php-xmlrpc
+    - php-pecl-memcache
+
+#- name: install php
+#  yum: name=php state=present
+#
+#- name: install php-gd
+#  yum: name=php-gd state=present
+#
+#- name: install php-ldap
+#  yum: name=php-ldap state=present
+#
+#- name: install php-mbstring
+#  yum: name=php-mbstring state=present
+#
+#- name: install php-mysql
+#  yum: name=php-mysql state=present
+#
+#- name: install php-pdo
+#  yum: name=php-pdo state=present
+#
+#- name: install php-pear
+#  yum: name=php-pear state=present
+#
+#- name: install php-xml
+#  yum: name=php-xml state=present
+#
+#- name: install php-xmlrpc
+#  yum: name=php-xmlrpc state=present
+#
+#- name: install php-pecl-memcache
+#  yum: name=php-pecl-memcache state=present

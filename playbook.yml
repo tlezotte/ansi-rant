@@ -4,6 +4,7 @@
 - hosts: all
   sudo: true
   vars:
+    server_name: centos66.vagrant.com
     vagrant_share: /vagrant
     sites_share: /sites
     document_root: /vagrant/somapp/www
