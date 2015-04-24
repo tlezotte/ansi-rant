@@ -25,6 +25,7 @@
     - include: tasks/addusers.yml
   tasks:
     - include: tasks/apache.yml
+    - include: tasks/nginx.yml
     - include: tasks/php.yml
     - include: tasks/mysql.yml
     - include: tasks/memcached.yml
