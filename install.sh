@@ -52,8 +52,8 @@ then
     exit
 fi
 
-echo "$boxip $boxhostname" >> /etc/hosts
-exit
+sudo echo "$boxip $boxhostname" >> /etc/hosts
+
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
