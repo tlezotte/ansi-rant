@@ -1,11 +1,14 @@
 ---
-- name: install httpd
+- name: Installing Apache httpd
   yum: name=httpd state=present
   
-- name: Copy across new virtual host
+- name: Generating httpd.conf file
   template: 
     src=templates/httpd.conf.j2 
     dest=/etc/httpd/conf/httpd.conf
 
-- name: Start apache service
+- name: Creating document root directory
+  file: path={{ document_root }} state=directory
+
+- name: Start httpd service
   service: name=httpd state=reloaded
