@@ -1,7 +1,7 @@
 ## ANSIbile - vagRANT
   
 ### How to run ansi-rant
-> git clone https://github.com/tlezotte/ansi-rant ; sudo ansi-rant/install.sh 
+> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh 
   
 ### What does the INSTALL.SH script do?
 1. Installs [Homebrew](http://brew.sh/) and [Cask](http://caskroom.io/)
