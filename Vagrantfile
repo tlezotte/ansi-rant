@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "playbook.yml"
   end
+
   #config.vm.network "private_network", ip: "192.168.10.10"
   ##config.vm.forward_port 80, 8080
   #config.vm.provision "chef_solo", run_list: ["vagrant_book"]
@@ -46,6 +47,9 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
+  config.vm.synced_folder ".", "/vagrant",
+    owner: "somapp", group: "somapp",
+    mount_options: ["dmode=775,fmode=664"]
   config.vm.synced_folder "~/Sites", "/sites"
 
   # Provider-specific configuration so you can fine-tune various

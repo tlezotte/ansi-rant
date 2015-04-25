@@ -9,5 +9,5 @@
   service: name=mysqld state=reloaded
 
 - name: Set root password for mysql
-  mysql_user: name=root password=vagrant host=localhost
+  mysql_user: name=root password={{ default_password_plain }} host=localhost
   mysql_user: name={{ default_user }} password={{ default_password_plain }} host=* priv=*.*:ALL,GRANT state=present
