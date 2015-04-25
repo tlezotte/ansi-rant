@@ -1,19 +1,19 @@
 ---
-- name: Installing mySQL
+- name: Installing MySQL
   yum: name={{ item }} state=present
   with_items:
     - mysql-server
     - mysql
 
-- name: Start mysqld service
-  service: name=mysqld state=reloaded
+- name: Start MySQLd service
+  service: name=mysqld state=started enabled=yes
 
-- name: Creating databases
+- name: Creating Databases
   mysql_db: name={{ item }} state=present
   with_items:
     - drupal
 
-- name: Set root password for mysql
-  mysql_user: name=root password={{ default_password_plain }} host=localhost
+- name: Setup User Accounts
+  mysql_user: name=root password={{ default_password_plain }} host=localhost state=present
   mysql_user: name={{ default_user }} password={{ default_password_plain }} host=* priv=*.*:ALL,GRANT state=present
   mysql_user: name=drupal password={{ default_password_plain }} host=* priv=drupal.*:ALL,GRANT state=present
