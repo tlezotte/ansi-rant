@@ -87,8 +87,8 @@ sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
 # Start installing
 vagrant up
 
-# Login to VM
-vagrant ssh
-
 # Open default website
 open http://$boxhostname
+
+# Login to VM
+vagrant ssh
