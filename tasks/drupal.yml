@@ -21,3 +21,14 @@
 
 - name: Removing Drupal archive file
   file: path="/tmp/drupal-{{ drupal_version }}.tar.gz" state=absent
+
+- name: Create files directory
+  file: path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/files" state=directory
+
+- name: Creating settings.php file
+  file: path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/settings.php" state=touch
+
+- name: Generating settings.php content
+  template:
+    src=templates/settings.php.j2
+    dest="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/settings.php"
