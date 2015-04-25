@@ -7,6 +7,9 @@
     src=templates/httpd.conf.j2 
     dest=/etc/httpd/conf/httpd.conf
 
+- name: Creating web root
+  file: path={{ document_root }} state=directory
+
 - name: Generating index.html file
   template:
     src=templates/index.html.j2
