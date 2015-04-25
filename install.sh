@@ -82,13 +82,10 @@ cd $OS
 
 # Let the system know about your options
 sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
+sudo sh -c 'echo "$boxip\t$boxhostname\n" >> /etc/hosts'
 
 # Start installing
 vagrant up
-
-printf "Please run the command below in Terminal, then press enter: "
-printf 'sudo echo "$boxip $boxhostname" >> /etc/hosts'
-read hosts
 
 # Open default website
 open http://$boxhostname
