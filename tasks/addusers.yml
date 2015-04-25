@@ -11,9 +11,9 @@
 #    group={{ default_group }}
 #    mode=0755 state=directory recurse=yes
 
-#- name: Copy default bash_profile for somapp
-#  template: 
-#    src=templates/bash_profile.j2 
-#    dest={{ vagrant_share }}/{{ default_user }}/.bash_profile
-#    owner={{ default_user }} group={{ default_group }} mode=0755
+- name: Copy default bash_profile for somapp
+  template:
+    src=templates/bash_profile.j2
+    dest={{ vagrant_share }}/{{ default_user }}/.bash_profile
+    owner={{ default_user }} group={{ default_group }} mode=0755
     
