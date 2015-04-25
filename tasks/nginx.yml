@@ -5,7 +5,7 @@
 - name: Generating nginx.conf file
   template:
     src=templates/nginx.conf.j2
-    dest=/etc/nginx/httpd.conf
+    dest=/etc/nginx/nginx.conf
 
 - name: Start nginx service
   service: name=nginx state=reloaded
