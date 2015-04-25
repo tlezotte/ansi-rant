@@ -1,7 +1,5 @@
 ---
-# TODO: msg: Syntax error on line 292 of /etc/httpd/conf/httpd.conf:
-# TODO: DocumentRoot must be a directory
-- name: Installing mysql client and server
+- name: Installing mySQL
   yum: name={{ item }} state=present
   with_items:
     - mysql-server

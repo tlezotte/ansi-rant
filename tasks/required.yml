@@ -1,6 +1,6 @@
 ---
 - name: Installing required packages
-  yum: name=epel-release state=present
+  yum: name={{ item }} state=present
   with_items:
     - epel-release
     - libselinux-python
