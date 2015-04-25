@@ -81,8 +81,8 @@ mv ansi-rant $OS
 cd $OS
 
 # Let the system know about your options
-/usr/bin/sudo /bin/echo "$boxip $boxhostname" >> /etc/hosts
-/usr/bin/sed -i "s/change.vagrant.com/$boxhostname/" playbook.yml
+(sudo echo "$boxip $boxhostname" >> /etc/hosts)
+sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
 
 # Start installing
 vagrant up
