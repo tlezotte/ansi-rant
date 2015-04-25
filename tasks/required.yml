@@ -6,3 +6,8 @@
     - libselinux-python
     - ansible
     - MySQL-python
+
+- name: Generating Ansible hosts file
+  template:
+    src=templates/ansible_hosts.j2
+    dest=/etc/ansible/hosts
