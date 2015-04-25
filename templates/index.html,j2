@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="jumbotron">
+                    <h1 class="text-center">Welcome to ANSI-RANT</h1>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-2">
+                <a href="http://{{ server_name }}"><button type="button" class="btn btn-primary btn-lg btn-block">Apache</button></a>
+                <br>
+                <a href="http://{{ server_name }}:8080"><button type="button" class="btn btn-primary btn-lg btn-block">Nginx</button></a>
+                <br>
+                <a href="http://{{ server_name }}/drupal"><button type="button" class="btn btn-lg btn-block">Drupal</button></a>
+                <br>
+                <a href="http://{{ server_name }}/phpMyAdmin"><button type="button" class="btn btn-lg btn-block">phpMyAdmin</button></a>
+            </div>
+            <div class="col-md-5">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <td><strong>Server Name:</strong></td><td>{{ server_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vagrant Share:</strong></td><td>{{ vagrant_share }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sites Share:</strong></td><td>{{ sites_share }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Document Root:</strong></td><td>{{ document_root }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drupal:</strong></td><td>{{ drupal_version }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ElasticSearch:</strong></td><td>{{ es_version }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Default Password:</strong></td><td>{{ default_password_plain }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
