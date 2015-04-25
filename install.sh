@@ -81,14 +81,20 @@ mv ansi-rant $OS
 cd $OS
 
 # Let the system know about your options
-(sudo echo "$boxip $boxhostname" >> /etc/hosts)
 sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
 
 # Start installing
 vagrant up
 
+printf "Please run the command below in Terminal, then press enter: "
+printf 'sudo echo "$boxip $boxhostname" >> /etc/hosts'
+read hosts
+
 # Open default website
 open http://$boxhostname
+
+# change user directory to be open (temp)
+chmod -R 777 somapp
 
 # Login to VM
 vagrant ssh
