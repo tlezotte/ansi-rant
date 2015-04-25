@@ -82,7 +82,9 @@ cd $OS
 
 # Let the system know about your options
 sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
+echo "Enter your sudo password"
 sudo sh -c 'echo "$boxip\t$boxhostname\n" >> /etc/hosts'
+echo "Adding to /etc/hosts: $boxip\t$boxhostname\n"
 
 # Start installing
 vagrant up
@@ -91,7 +93,7 @@ vagrant up
 open http://$boxhostname
 
 # change user directory to be open (temp)
-chmod -R 777 somapp
+#chmod -R 755 somapp
 
 # Login to VM
 vagrant ssh
