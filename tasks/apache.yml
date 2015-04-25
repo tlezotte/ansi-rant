@@ -18,5 +18,13 @@
     src=templates/index.html.j2
     dest={{ document_root }}/index.html
 
+- name: Creating phpinfo.php file
+  file: path={{ document_root }}/phpinfo.php state=touch
+
+- name: Generating phpinfo.php content
+  template:
+    src=templates/phpinfo.php.j2
+    dest={{ document_root }}/phpinfo.php
+
 - name: Start httpd service
   service: name=httpd state=reloaded
