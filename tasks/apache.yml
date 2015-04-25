@@ -10,7 +10,10 @@
 - name: Creating web root
   file: path={{ document_root }} state=directory
 
-- name: Generating index.html file
+- name: Creating index.html file
+  file: path={{ document_root }}/index.html state=touch
+
+- name: Generating index.html content
   template:
     src=templates/index.html.j2
     dest={{ document_root }}/index.html
