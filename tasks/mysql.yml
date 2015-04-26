@@ -14,6 +14,20 @@
     - drupal
 
 - name: Setup User Accounts
-  mysql_user: name=root password={{ default_password_plain }} host=localhost state=present
-  mysql_user: name={{ default_user }} password={{ default_password_plain }} host=* priv=*.*:ALL,GRANT state=present
-  mysql_user: name=drupal password={{ default_password_plain }} host=* priv=drupal.*:ALL,GRANT state=present
+  mysql_user:
+    name=root
+    password={{ default_password_plain }}
+    host=localhost
+    state=present
+  mysql_user:
+    name={{ default_user }}
+    password={{ default_password_plain }}
+    host=*
+    priv=*.*:ALL,GRANT
+    state=present
+  mysql_user:
+    name=drupal
+    password={{ default_password_plain }}
+    host=*
+    priv=drupal.*:ALL,GRANT
+    state=present
