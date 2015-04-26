@@ -11,3 +11,8 @@
   template:
     src=templates/ansible_hosts.j2
     dest=/etc/ansible/hosts
+
+- name: Generating bash_profile file
+  template:
+    src=templates/bash_profile.j2
+    dest=/home/vagrant/.bash_profile
