@@ -8,23 +8,32 @@
     dest=/etc/httpd/conf/httpd.conf
 
 - name: Creating web root
-  file: path={{ document_root }} state=directory
+  file:
+    path={{ document_root }}
+    state=directory
+    #owner={{ default_user }} group={{ default_group }}
 
 - name: Creating index.html file
-  file: path={{ document_root }}/index.html state=touch
+  file:
+    path={{ document_root }}/index.html
+    state=touch
 
 - name: Generating index.html content
   template:
     src=templates/index.html.j2
     dest={{ document_root }}/index.html
+    owner={{ default_user }} group={{ default_group }}
 
 - name: Creating phpinfo.php file
-  file: path={{ document_root }}/phpinfo.php state=touch
+  file:
+    path={{ document_root }}/phpinfo.php
+    state=touch
 
 - name: Generating phpinfo.php content
   template:
     src=templates/phpinfo.php.j2
     dest={{ document_root }}/phpinfo.php
+    owner={{ default_user }} group={{ default_group }}
 
 - name: Start httpd service
   service: name=httpd state=reloaded

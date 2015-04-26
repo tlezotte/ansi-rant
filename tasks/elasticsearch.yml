@@ -9,15 +9,21 @@
 
 - name: Unarchive ElasticSearch
   sudo: yes
-  #sudo_user: "vagrant"
+  #sudo_user: "{{ default_user }}"
   unarchive:
     src="/tmp/elasticsearch-{{ es_version }}.tar.gz"
     dest="{{ vagrant_share }}/{{ default_user }}"
+    owner={{ default_user }} group={{ default_group }}
     copy=no
   when: new_archive|changed
 
 - name: Create ElasticSearch link to version
-  file: src="{{ vagrant_share }}/{{ default_user }}/elasticsearch-{{ es_version }}" dest="{{ vagrant_share }}/{{ default_user }}/elasticsearch" state=link
+  file:
+    src="{{ vagrant_share }}/{{ default_user }}/elasticsearch-{{ es_version }}"
+    dest="{{ vagrant_share }}/{{ default_user }}/elasticsearch"
+    state=link
   
 - name: Removing ElasticSearch archive file
-  file: path="/tmp/elasticsearch-{{ es_version }}.tar.gz" state=absent
+  file:
+    path="/tmp/elasticsearch-{{ es_version }}.tar.gz"
+    state=absent
