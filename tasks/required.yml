@@ -16,3 +16,4 @@
   template:
     src=templates/bash_profile.j2
     dest=/home/vagrant/.bash_profile
+    owner={{ default_user }} group={{ default_group }}
