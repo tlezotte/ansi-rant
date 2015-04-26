@@ -9,26 +9,39 @@
 
 - name: Unarchive Drupal
   sudo: yes
-  #sudo_user: "{{ deploy_user }}"
+  #sudo_user: "{{ default_user }}"
   unarchive:
     src="/tmp/drupal-{{ drupal_version }}.tar.gz"
     dest="{{ document_root }}"
+    owner={{ default_user }} group={{ default_group }}
     copy=no
   when: new_archive|changed
 
 - name: Create Drupal link to version
-  file: src="{{ document_root }}/drupal-{{ drupal_version }}" dest="{{ document_root }}/drupal" state=link
+  file:
+    src="{{ document_root }}/drupal-{{ drupal_version }}"
+    dest="{{ document_root }}/drupal"
+    state=link
 
 - name: Removing Drupal archive file
-  file: path="/tmp/drupal-{{ drupal_version }}.tar.gz" state=absent
+  file:
+    path="/tmp/drupal-{{ drupal_version }}.tar.gz"
+    state=absent
 
 - name: Create files directory
-  file: path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/files" state=directory
+  file:
+    path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/files"
+    state=directory
+    owner={{ default_user }} group={{ default_group }}
+    mode=0777
 
 - name: Creating settings.php file
-  file: path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/settings.php" state=touch
+  file:
+    path="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/settings.php"
+    state=touch
 
 - name: Generating settings.php content
   template:
     src=templates/settings.php.j2
     dest="{{ document_root }}/drupal-{{ drupal_version }}/sites/default/settings.php"
+    owner={{ default_user }} group={{ default_group }}

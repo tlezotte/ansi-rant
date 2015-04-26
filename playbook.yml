@@ -7,12 +7,12 @@
     server_name: change.vagrant.com
     vagrant_share: /vagrant
     sites_share: /sites
-    document_root: /vagrant/somapp/www
+    document_root: /home/vagrant/html
     drupal_version: 7.36
     phpmyadmin_version: 4.4.2
     es_version: 1.5.1
-    default_user: somapp
-    default_group: somapp
+    default_user: vagrant
+    default_group: vagrant
     default_password: andwFlxe77c2A
     default_password_plain: vagrant
   handlers:
@@ -22,7 +22,7 @@
       service: name=mysqld state=reloaded
   pre_tasks:
     - include: tasks/required.yml
-    - include: tasks/addusers.yml
+  #  - include: tasks/addusers.yml
   tasks:
     - include: tasks/apache.yml
     - include: tasks/nginx.yml
@@ -31,8 +31,8 @@
     - include: tasks/memcached.yml
     - include: tasks/varnish.yml
     - include: tasks/drupal.yml
-    - include: tasks/phpmyadmin.yml
-    - include: tasks/elasticsearch.yml
+    #- include: tasks/phpmyadmin.yml
+    #- include: tasks/elasticsearch.yml
   post_tasks:
     - include: tasks/start_services.yml
   

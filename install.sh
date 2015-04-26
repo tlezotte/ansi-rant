@@ -83,8 +83,8 @@ cd $OS
 # Let the system know about your options
 sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
 echo "Enter your sudo password"
-sudo sh -c 'echo "$boxip\t$boxhostname\n" >> /etc/hosts'
-echo "Adding to /etc/hosts: $boxip\t$boxhostname\n"
+sudo sh -c "echo \"$boxip\t$boxhostname\" >> /etc/hosts"
+echo "Adding to /etc/hosts: $boxip\t$boxhostname"
 
 # Start installing
 vagrant up
