@@ -12,3 +12,4 @@
     - php-xml
     - php-xmlrpc
     - php-pecl-memcache
+    - php-fpm
