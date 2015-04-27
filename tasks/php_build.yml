@@ -17,38 +17,17 @@
   when: new_archive|changed
   
 - name: install httpd-devel
-  yum: name=httpd-devel state=present
-  
-- name: install libxml-devel
-  yum: name=libxml-devel state=present
-  
-- name: install openssl-devel
-  yum: name=openssl-devel state=present
-  
-- name: install libcurl-devel
-  yum: name=libcurl-devel state=present
-  
-- name: install libcurl-devel
-  yum: name=libcurl-devel state=present
-  
-- name: install libpng-devel
-  yum: name=libpng-devel state=present
-  
-- name: install libjpeg-devel
-  yum: name=libjpeg-devel state=present
-  
-- name: install freetype-devel
-  yum: name=freetype-devel state=present
-  
-- name: install libmcrypt-devel
-  yum: name=libmcrypt-devel state=present
-  
-- name: install readline-devel
-  yum: name=readline-devel state=present
-  
-- name: install libtidy-devel
-  yum: name=libtidy-devel state=present
-  
-- name: install libxslt-devel
-  yum: name=libxslt-devel state=present
-    
+  yum: name={{ item }} state=present
+  with_items:
+    - httpd-devel
+    - libxml-devel
+    - openssl-devel
+    - libcurl-devel
+    - libcurl-devel
+    - libpng-devel
+    - libjpeg-devel
+    - freetype-devel
+    - libmcrypt-devel
+    - readline-devel
+    - libtidy-devel
+    - libxslt-devel
