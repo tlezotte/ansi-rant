@@ -1,8 +1,9 @@
 ---
 - name: Stop firewall (iptables) service
   service: name={{ item }} state=stopped enabled=no
-  - iptables
-  - ip6tables
+  with_items:
+    - iptables
+    - ip6tables
 
 - name: Installing required packages
   yum: name={{ item }} state=present
