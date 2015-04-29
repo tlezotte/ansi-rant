@@ -81,10 +81,15 @@ mv ansi-rant $OS
 cd $OS
 
 # Let the system know about your options
-sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
-echo "Enter your sudo password"
-sudo sh -c "echo \"$boxip\t$boxhostname\" >> /etc/hosts"
-echo "Adding to /etc/hosts: $boxip\t$boxhostname"
+if [ ${#checkhosts} -ne 0 ];
+then
+    echo "Adding to /etc/hosts: $boxip\t$boxhostname"
+    sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
+    sudo sh -c "echo \"$boxip\t$boxhostname\" >> /etc/hosts"
+fi
+
+# Update Vagrantfile
+sed -i "" "s/192.168.10.1/$boxip/" playbook.yml
 
 # Start installing
 vagrant up
