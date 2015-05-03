@@ -8,10 +8,9 @@
     dest=/etc/httpd/conf/httpd.conf
 
 - name: Copy default www (cgi-bin,icons,error,html)
-  copy:
-    src=/var/www
-    dest={{ document_root }}
-    owner={{ default_user }} group={{ default_group }}
+  shell: cp -rL /var/www /home/{{ default_user }}
+  sudo: yes
+  sudo_user: "{{ default_user }}"
 
 - name: Creating index.html file
   file:
