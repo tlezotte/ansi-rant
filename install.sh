@@ -44,13 +44,6 @@ if [ -z "$boxip" ];
 then
     boxip=$defaultboxip
 fi
-# check hosts file for ip or dns name
-checkhosts=$(grep '$boxip\|$OS' /etc/hosts)
-if [ ${#checkhosts} -ne 0 ];
-then
-    printf "\n** $boxip or $boxhostname already exists in /etc/hosts **\n"
-    exit
-fi
 
 # Check for Homebrew,
 # Install if we don't have it
@@ -80,14 +73,6 @@ brew cleanup
 mv ansi-rant $OS
 cd $OS
 
-# Let the system know about your options
-if [ ${#checkhosts} -ne 0 ];
-then
-    echo "Adding to /etc/hosts: $boxip\t$boxhostname"
-    sed -i "" "s/change.vagrant.com/$boxhostname/" playbook.yml
-    sudo sh -c "echo \"$boxip\t$boxhostname\" >> /etc/hosts"
-fi
-
 # Update Vagrantfile
 sed -i "" "s/192.168.10.10/$boxip/" playbook.yml
 
@@ -95,7 +80,7 @@ sed -i "" "s/192.168.10.10/$boxip/" playbook.yml
 vagrant up
 
 # Open default website
-open http://$boxhostname
+open http://$boxip:8080
 
 # change user directory to be open (temp)
 #chmod -R 755 somapp

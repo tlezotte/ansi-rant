@@ -14,7 +14,8 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "chef/centos-6.6"
   config.vm.network "private_network", ip: "192.168.10.10"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 8080 # httpd
+  config.vm.network "forwarded_port", guest: 81, host: 8081 # nginx
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "playbook.yml"
