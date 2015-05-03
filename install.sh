@@ -3,7 +3,7 @@
 # TODO: have this script update Vagrantfile with variables
 
 defaultbox="chef/centos-6.6"
-defaultboxip="192.168.10.1"
+defaultboxip="192.168.10.10"
 defaultdomain="vagrant.com"
 
 clear
@@ -89,7 +89,7 @@ then
 fi
 
 # Update Vagrantfile
-sed -i "" "s/192.168.10.1/$boxip/" playbook.yml
+sed -i "" "s/192.168.10.10/$boxip/" playbook.yml
 
 # Start installing
 vagrant up
