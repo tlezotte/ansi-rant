@@ -1,14 +1,13 @@
 #!/bin/bash
 
 # Alias
-alias somapp="su - somapp"
 alias rerun_ansible="ansible-playbook /vagrant/playbook.yml --connection=local"
 
 # -- exported variables --
 export CLICOLOR=1
 
 # -- set path --
-export PATH=$PATH:$HOME/bin:/sbin:/etc/init.d
+export PATH=$PATH:$HOME/bin:/home/{{ default_user }}/.composer/vendor/bin:/sbin:/etc/init.d
 export JAVA_HOME=/etc/alternatives/jre_1.7.0
 
 txtblk='\e[0;30m' # Black - Regular
@@ -53,7 +52,7 @@ print_before_the_prompt () {
       *"lp"*) REMOTE="PROD"; cremote="$bldred" ;;
       *"lt"*) REMOTE="TEST" ;;
       *"ld"*) REMOTE="DEV" ;;
-      *) REMOTE="REMOTE" ;;
+      *) REMOTE="--VARNISH--" ;;
     esac
 
     printf "\n$txtred%s: $bldgrn%s $cremote%s\n$txtrst" "$host" "$PWD" "$REMOTE"
