@@ -41,7 +41,7 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   {{ document_root }};
+            root   {{ document_root }}/html;
             index  index.html index.htm;
         }
 
