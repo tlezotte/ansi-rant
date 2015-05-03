@@ -1,6 +1,9 @@
 ---
-- name: Starting httpd service  
-  service: name=httpd state=started enabled=yes
+- name: Restarting httpd service
+  service: name=httpd state=restarted
 
-- name: Start mysqld service
-  service: name=mysqld state=started enabled=yes
+- name: Restarting nginx service
+  service: name=nginx state=restarted
+
+- name: Restarting mysqld service
+  service: name=mysqld state=restarted
