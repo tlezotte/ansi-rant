@@ -37,8 +37,16 @@ if test ! $(which brew); then
 fi
 
 # Installing brew software
-brew install brew-cask
-brew install ansible
+brew_check="brew info brew-cask | grep Error"
+if [ ${#brew_check} -ne 0 ];
+then
+    brew install brew-cask
+fi
+ansible_check="brew info ansible | grep Error"
+if [ ${#ansible_check} -ne 0 ];
+then
+    brew install ansible
+fi
 
 # Install cask software
 if [ ! -d "/opt/homebrew-cask/Caskroom/vagrant" ];

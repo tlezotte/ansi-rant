@@ -19,8 +19,8 @@
 
 - name: Create phpMyAdmin link to version
   file:
-    src="{{ document_root }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
-    dest="{{ document_root }}/phpMyAdmin"
+    src="{{ document_root }}/html/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
+    dest="{{ document_root }}/html/phpMyAdmin"
     state=link
 
 - name: Removing phpMyAdmin archive file
