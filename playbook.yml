@@ -4,7 +4,8 @@
 - hosts: all
   sudo: true
   vars:
-    server_name: change.vagrant.com
+    server_name: localhost
+    timezone: America/Chicago
     vagrant_share: /vagrant
     sites_share: /sites
     document_root: /home/vagrant/www
