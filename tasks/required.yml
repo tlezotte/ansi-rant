@@ -23,3 +23,14 @@
     src=templates/bash_profile.j2
     dest=/home/vagrant/.bash_profile
     owner={{ default_user }} group={{ default_group }}
+
+- name: Remove default localtime file
+  file:
+    path="/etc/localtime"
+    state=absent
+
+- name: Link to localtime file
+  file:
+    src="/usr/share/zoneinfo/{{ timezone }}"
+    dest="/etc/localtime"
+    state=link
