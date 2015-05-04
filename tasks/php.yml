@@ -13,3 +13,13 @@
     - php-xmlrpc
     - php-pecl-memcache
     - php-fpm
+
+- name: Configuring php.ini file
+  template:
+    src=templates/php.ini.j2
+    dest=/etc/php.ini
+
+- name: Change group owner for PHP session
+  file:
+    path="/var/lib/php/session"
+    group={{ default_group }}
