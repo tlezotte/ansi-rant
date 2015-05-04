@@ -47,6 +47,9 @@
                         <td><strong>Server Name:</strong></td><td>{{ server_name }}</td>
                     </tr>
                     <tr>
+                        <td><strong>Timezone:</strong></td><td>{{ timezone }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Vagrant Share:</strong></td><td>{{ vagrant_share }}</td>
                     </tr>
                     <tr>
@@ -56,13 +59,16 @@
                         <td><strong>Document Root:</strong></td><td>{{ document_root }}</td>
                     </tr>
                     <tr>
+                        <td><strong>Default User:</strong></td><td>{{ default_user }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Default Password:</strong></td><td>{{ default_password_plain }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Drupal:</strong></td><td>{{ drupal_version }}</td>
                     </tr>
                     <tr>
                         <td><strong>ElasticSearch:</strong></td><td>{{ es_version }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Default Password:</strong></td><td>{{ default_password_plain }}</td>
                     </tr>
                 </table>
             </div>
