@@ -34,5 +34,13 @@
     dest={{ document_root }}/html/phpinfo.php
     owner={{ default_user }} group={{ default_group }}
 
+- name: Copy favicon to document_root
+  sudo: yes
+  sudo_user: "{{ deploy_user }}"
+  get_url:
+    url="https://github.com/tlezotte/ansi-rant/assets/favicon.ico"
+    dest="{{ document_root }}/html"
+  register: new_archive
+
 - name: Start httpd service
   service: name=httpd state=reloaded
