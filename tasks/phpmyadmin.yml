@@ -12,7 +12,7 @@
   #sudo_user: "{{ deploy_user }}"
   unarchive:
     src="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
-    dest={{ document_root }}
+    dest={{ document_root }}/html
     owner={{ default_user }} group={{ default_group }}
     copy=no
   when: new_archive|changed
