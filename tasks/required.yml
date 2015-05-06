@@ -34,3 +34,10 @@
     src="/usr/share/zoneinfo/{{ timezone }}"
     dest="/etc/localtime"
     state=link
+
+- name: Create software directory
+  file:
+    path="{{ software_root }}"
+    state=directory
+    owner={{ default_user }} group={{ default_group }}
+    mode=0777
