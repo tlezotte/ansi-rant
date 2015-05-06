@@ -41,8 +41,8 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   {{ document_root }}/html;
-            index  index.html index.htm;
+            root   {{ software_root }}/www/html;
+            index  index.php index.html index.htm;
         }
 
         #error_page  404              /404.html;

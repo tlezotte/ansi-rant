@@ -8,30 +8,30 @@
     dest=/etc/httpd/conf/httpd.conf
 
 - name: Copy default www (cgi-bin,icons,error,html)
-  shell: cp -rL /var/www /home/{{ default_user }}
+  shell: cp -rL /var/www {{ software_root }}
   sudo: yes
   sudo_user: "{{ default_user }}"
 
 - name: Creating index.html file
   file:
-    path={{ document_root }}/html/index.html
+    path={{ software_root }}/www/html/index.html
     state=touch
 
 - name: Generating index.html content
   template:
     src=templates/index.html.j2
-    dest={{ document_root }}/html/index.html
+    dest={{ software_root }}/www/html/index.html
     owner={{ default_user }} group={{ default_group }}
 
 - name: Creating phpinfo.php file
   file:
-    path={{ document_root }}/html/phpinfo.php
+    path={{ software_root }}/www/html/phpinfo.php
     state=touch
 
 - name: Generating phpinfo.php content
   template:
     src=templates/phpinfo.php.j2
-    dest={{ document_root }}/html/phpinfo.php
+    dest={{ software_root }}/www/html/phpinfo.php
     owner={{ default_user }} group={{ default_group }}
 
 - name: Copy favicon to document_root
@@ -39,7 +39,7 @@
   sudo_user: "{{ default_user }}"
   get_url:
     url="https://raw.githubusercontent.com/tlezotte/ansi-rant/master/assets/favicon.ico"
-    dest="{{ document_root }}/html"
+    dest="{{ software_root }}/www/html"
   register: new_archive
 
 - name: Start httpd service
