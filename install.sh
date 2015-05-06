@@ -42,7 +42,7 @@ then
     root=$defaultroot
 fi
 #Switch software root
-sed -i "" "s|software_root: /home/vagrant|software_root: $root|" playbook.yml
+sed -i "" "s|software_root: /home/vagrant|software_root: $root|" ansi-rant/playbook.yml
 
 
 # Check for Homebrew,
