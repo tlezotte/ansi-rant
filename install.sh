@@ -2,11 +2,15 @@
 
 
 defaultbox="chef/centos-6.6"
+defaultroot="/home/vagrant"
 
 clear
 
 echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
 read box
+
+echo -n "Enter a document root [$defaultroot]: "
+read root
 
 
 #
@@ -28,6 +32,18 @@ then
     printf "\n** The directory $OS already exists **\n"
     exit
 fi
+
+#
+# -- root section --
+#
+# set default is enter is pressed
+if [ -z "$root" ];
+then
+    root=$defaultroot
+fi
+#Switch software root
+sed -i "" "s|software_root: /home/vagrant|software_root: $root|" playbook.yml
+
 
 # Check for Homebrew,
 # Install if we don't have it

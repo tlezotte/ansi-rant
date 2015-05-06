@@ -12,15 +12,15 @@
   #sudo_user: "{{ deploy_user }}"
   unarchive:
     src="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
-    dest={{ document_root }}/html
+    dest={{ software_root }}/www/html
     owner={{ default_user }} group={{ default_group }}
     copy=no
   when: new_archive|changed
 
 - name: Create phpMyAdmin link to version
   file:
-    src="{{ document_root }}/html/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
-    dest="{{ document_root }}/html/phpMyAdmin"
+    src="{{ software_root }}/www/html/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
+    dest="{{ software_root }}/www/html/phpMyAdmin"
     state=link
 
 - name: Removing phpMyAdmin archive file

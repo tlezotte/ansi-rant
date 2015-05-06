@@ -8,7 +8,8 @@
     timezone: America/Chicago
     vagrant_share: /vagrant
     sites_share: /sites
-    document_root: /home/vagrant/www
+    software_root: /home/vagrant
+    vagrant_home: /home/vagrant
     drupal_version: 7.36
     phpmyadmin_version: 4.4.2
     es_version: 1.5.1
