@@ -2,8 +2,8 @@
 
 # Alias
 alias rerun_ansible="ansible-playbook {{ vagrant_share }}/playbook.yml --connection=local"
-alias to_remote="sed -i -- 's|{{ vagrant_home }}|{{ software_root }}|g'"
-alias from_remote="sed -i -- 's|{{ software_root }}|{{ vagrant_home }}|g'"
+alias to_remote="sed -i \"\" 's|{{ vagrant_home }}|{{ software_root }}|g'"
+alias from_remote="sed -i \"\" 's|{{ software_root }}|{{ vagrant_home }}|g'"
 
 # -- exported variables --
 export CLICOLOR=1
