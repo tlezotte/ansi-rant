@@ -29,6 +29,8 @@
     - include: tasks/apache.yml
     - include: tasks/nginx.yml
     - include: tasks/php.yml
+    - include: tasks/ruby.yml
+    - include: tasks/nodejs.yml
     - include: tasks/composer.yml
     - include: tasks/mysql.yml
     - include: tasks/memcached.yml
