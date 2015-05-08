@@ -1,0 +1,14 @@
+---
+- name: Installing Ruby
+  yum: name={{ item }} state=present
+  with_items:
+    - ruby
+    - rubygem
+    - ruby-mysql
+    - ruby-ldap
+
+- name: Installing Ruby Gems
+  gem: name={{ item }} state=latest
+  with_items:
+    - sass
+    - jekyll
