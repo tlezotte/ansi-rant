@@ -1,0 +1,11 @@
+---
+- name: Installing node.js
+  yum: name={{ item }} state=present
+  with_items:
+    - nodejs
+    - npm
+
+- name: Install node.js package globally.
+  npm: name={{ item }} global=yes
+  with_items:
+    - gulp
