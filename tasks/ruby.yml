@@ -3,7 +3,7 @@
   yum: name={{ item }} state=present
   with_items:
     - ruby
-    - rubygem
+    - rubygems
     - ruby-mysql
     - ruby-ldap
 
