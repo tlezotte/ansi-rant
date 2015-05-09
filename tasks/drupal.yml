@@ -4,18 +4,18 @@
 
 - name: Create files directory
   file:
-    path="{{ software_root }}/www/drupal-{{ drupal_version }}/sites/default/files"
+    path="{{ default_home }}/www/drupal-{{ drupal_version }}/sites/default/files"
     state=directory
     owner={{ default_user }} group={{ default_group }}
     mode=0777
 
 - name: Creating settings.php file
   file:
-    path="{{ software_root }}/www/drupal-{{ drupal_version }}/sites/default/settings.php"
+    path="{{ default_home }}/www/drupal-{{ drupal_version }}/sites/default/settings.php"
     state=touch
 
 - name: Generating settings.php content
   template:
     src=templates/settings.php.j2
-    dest="{{ software_root }}/www/drupal-{{ drupal_version }}/sites/default/settings.php"
+    dest="{{ default_home }}/www/drupal-{{ drupal_version }}/sites/default/settings.php"
     owner={{ default_user }} group={{ default_group }}
