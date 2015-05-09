@@ -1,9 +1,16 @@
 ---
-- name: Create somapp group
-  group: name={{ default_group }} state=present
+- name: Create default user
+  group:
+    name={{ default_group }}
+    state=present
   
-- name: Create somapp user
-  user: name={{ default_user }} home={{ vagrant_share }}/{{ default_user }} shell=/bin/bash group={{ default_group }} password={{ default_password }}
+- name: Create default group
+  user:
+    name={{ default_user }}
+    home={{ default_home }}
+    shell=/bin/bash
+    group={{ default_group }}
+    password={{ default_password }}
 
 #- name: Change ownership somapp home
 #  file: dest={{ vagrant_share }}/{{ default_user }}
@@ -11,9 +18,9 @@
 #    group={{ default_group }}
 #    mode=0755 state=directory recurse=yes
 
-- name: Copy default bash_profile for somapp
+- name: Copy default bash_profile
   template:
     src=templates/bash_profile.j2
-    dest={{ vagrant_share }}/{{ default_user }}/.bash_profile
+    dest={{ default_home }}/.bash_profile
     owner={{ default_user }} group={{ default_group }} mode=0755
     

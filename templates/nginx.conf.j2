@@ -41,7 +41,7 @@ http {
         #access_log  logs/host.access.log  main;
 
         location / {
-            root   {{ software_root }}/www/html;
+            root   {{ default_home }}/www/html;
             index  index.php index.html index.htm;
         }
 

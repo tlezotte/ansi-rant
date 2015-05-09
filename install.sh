@@ -2,14 +2,19 @@
 
 
 defaultbox="chef/centos-6.6"
+defaultuser="vagrant"
 defaultroot="/home/vagrant"
+
 
 clear
 
 echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
 read box
 
-echo -n "Enter a document root [$defaultroot]: "
+echo -n "Create a users [$defaultuser]: "
+read user
+
+echo -n "Enter users home directory [$defaultroot]: "
 read root
 
 
@@ -34,6 +39,18 @@ then
 fi
 
 #
+# -- user section --
+#
+# set default is enter is pressed
+if [ -z "$user" ];
+then
+    box=$defaultuser
+fi
+#Switch user
+sed -i "" "s|default_user: vagrant|default_user: $user|" ansi-rant/playbook.yml
+sed -i "" "s|default_group: vagrant|default_group: $user|" ansi-rant/playbook.yml
+
+#
 # -- root section --
 #
 # set default is enter is pressed
@@ -42,7 +59,7 @@ then
     root=$defaultroot
 fi
 #Switch software root
-sed -i "" "s|software_root: /home/vagrant|software_root: $root|" ansi-rant/playbook.yml
+sed -i "" "s|default_home: /home/vagrant|default_home: $root|" ansi-rant/playbook.yml
 
 
 # Check for Homebrew,
