@@ -22,7 +22,7 @@
   template:
     src=templates/bash_profile.j2
     dest={{ vagrant_home }}/.bash_profile
-    owner={{ default_user }} group={{ default_group }}
+    owner={{ vagrant_user }} group={{ vagrant_group }}
 
 - name: Remove default localtime file
   file:
@@ -34,10 +34,3 @@
     src="/usr/share/zoneinfo/{{ timezone }}"
     dest="/etc/localtime"
     state=link
-
-- name: Create software directory
-  file:
-    path="{{ default_home }}"
-    state=directory
-    owner={{ default_user }} group={{ default_group }}
-    mode=0777
