@@ -289,7 +289,7 @@ UseCanonicalName Off
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "{{ software_root }}/www/html"
+DocumentRoot "{{ default_home }}/www/html"
 
 #
 # Each directory to which Apache has access can be configured with respect
@@ -314,7 +314,7 @@ DocumentRoot "{{ software_root }}/www/html"
 #
 # This should be changed to whatever you set DocumentRoot to.
 #
-<Directory "{{ software_root }}/www/html">
+<Directory "{{ default_home }}/www/html">
 
 #
 # Possible values for the Options directive are "None", "All",
@@ -548,9 +548,9 @@ ServerSignature On
 # We include the /icons/ alias for FancyIndexed directory listings.  If you
 # do not use FancyIndexing, you may comment this out.
 #
-Alias /icons/ "{{ software_root }}/www/html/icons/"
+Alias /icons/ "{{ default_home }}/www/html/icons/"
 
-<Directory "{{ software_root }}/www/html/icons">
+<Directory "{{ default_home }}/www/html/icons">
     Options Indexes MultiViews FollowSymLinks
     AllowOverride None
     Order allow,deny
@@ -573,13 +573,13 @@ Alias /icons/ "{{ software_root }}/www/html/icons/"
 # The same rules about trailing "/" apply to ScriptAlias directives as to
 # Alias.
 #
-ScriptAlias /cgi-bin/ "{{ software_root }}/www/html/cgi-bin/"
+ScriptAlias /cgi-bin/ "{{ default_home }}/www/html/cgi-bin/"
 
 #
-# "{{ software_root }}/www/cgi-bin" should be changed to whatever your ScriptAliased
+# "{{ default_home }}/www/cgi-bin" should be changed to whatever your ScriptAliased
 # CGI directory exists, if you have that configured.
 #
-<Directory "{{ software_root }}/www/html/cgi-bin">
+<Directory "{{ default_home }}/www/html/cgi-bin">
     AllowOverride None
     Options None
     Order allow,deny
@@ -848,15 +848,15 @@ AddOutputFilter INCLUDES .shtml
 #   Alias /error/include/ "/your/include/path/"
 #
 # which allows you to create your own set of files by starting with the
-# {{ software_root }}/www/error/include/ files and
+# {{ default_home }}/www/error/include/ files and
 # copying them to /your/include/path/, even on a per-VirtualHost basis.
 #
 
-Alias /error/ "{{ software_root }}/www/html/error/"
+Alias /error/ "{{ default_home }}/www/html/error/"
 
 <IfModule mod_negotiation.c>
 <IfModule mod_include.c>
-    <Directory "{{ software_root }}/www/html/error">
+    <Directory "{{ default_home }}/www/html/error">
         AllowOverride None
         Options IncludesNoExec
         AddOutputFilter Includes html

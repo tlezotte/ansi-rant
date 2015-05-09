@@ -21,7 +21,7 @@
 - name: Generating bash_profile file
   template:
     src=templates/bash_profile.j2
-    dest=/home/vagrant/.bash_profile
+    dest={{ vagrant_home }}/.bash_profile
     owner={{ default_user }} group={{ default_group }}
 
 - name: Remove default localtime file
@@ -37,7 +37,7 @@
 
 - name: Create software directory
   file:
-    path="{{ software_root }}"
+    path="{{ default_home }}"
     state=directory
     owner={{ default_user }} group={{ default_group }}
     mode=0777

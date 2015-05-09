@@ -8,13 +8,13 @@
     timezone: America/Chicago
     vagrant_share: /vagrant
     sites_share: /sites
-    software_root: /home/vagrant
-    vagrant_home: /home/vagrant
     drupal_version: 7.36
     phpmyadmin_version: 4.4.2
     es_version: 1.5.1
     default_user: vagrant
     default_group: vagrant
+    default_home: /home/vagrant
+    vagrant_home: /home/vagrant
     default_password: andwFlxe77c2A
     default_password_plain: vagrant
   handlers:
@@ -24,12 +24,11 @@
       service: name=mysqld state=reloaded
   pre_tasks:
     - include: tasks/required.yml
-  #  - include: tasks/addusers.yml
+    - include: tasks/addusers.yml
   tasks:
     - include: tasks/apache.yml
     - include: tasks/nginx.yml
     - include: tasks/php.yml
-    - include: tasks/ruby.yml
     - include: tasks/nodejs.yml
     - include: tasks/composer.yml
     - include: tasks/mysql.yml
