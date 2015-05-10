@@ -1,22 +1,30 @@
 ---
-- name: Create default user
+
+#- name: Create users home directory
+#  file:
+#    path="{{ default_home }}"
+#    state=directory
+#    owner={{ default_user }} group={{ default_group }}
+#    mode=0775
+
+- name: Create default group
   group:
     name={{ default_group }}
     state=present
   
-- name: Create default group
+- name: Create default user
   user:
     name={{ default_user }}
+    group={{ default_group }}
     home={{ default_home }}
     shell=/bin/bash
-    group={{ default_group }}
     password={{ default_password }}
+    createhome=yes
 
-#- name: Change ownership somapp home
-#  file: dest={{ vagrant_share }}/{{ default_user }}
-#    owner={{ default_user }}
-#    group={{ default_group }}
-#    mode=0755 state=directory recurse=yes
+#- name: Change ownership user home
+#  shell: mkdir -p {{ default_home }}
+#  sudo: yes
+#  sudo_user: "{{ default_user }}"
 
 - name: Copy default bash_profile
   template:
