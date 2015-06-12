@@ -12,6 +12,6 @@
   tags: composer
 
 - name: Installing drush with Composer
-  shell: /usr/local/bin/composer global require drush/drush:dev-master
+  shell: /usr/local/bin/composer global require drush/drush:7.*
   sudo: yes
   sudo_user: "{{ default_user }}"
