@@ -1,11 +1,10 @@
 ---
-
-#- name: Create users home directory
-#  file:
-#    path="{{ default_home }}"
-#    state=directory
-#    owner={{ default_user }} group={{ default_group }}
-#    mode=0775
+- name: Create users home directory
+  file:
+    path="{{ default_home }}"
+    state=directory
+    owner={{ default_user }} group={{ default_group }}
+    mode=0775
 
 - name: Create default group
   group:
@@ -19,7 +18,6 @@
     home={{ default_home }}
     shell=/bin/bash
     password={{ default_password }}
-    createhome=yes
 
 #- name: Change ownership user home
 #  shell: mkdir -p {{ default_home }}
