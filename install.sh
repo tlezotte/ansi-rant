@@ -95,7 +95,7 @@ fi
 brew cleanup
 
 # Rename git directory to centos6
-#mv ansi-rant $OS
+mv ansi-rant $OS
 cd $OS
 
 # Start installing
