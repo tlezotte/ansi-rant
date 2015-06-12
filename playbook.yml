@@ -29,13 +29,13 @@
     - include: tasks/addusers.yml
   tasks:
     - include: tasks/apache.yml
-    - include: tasks/nginx.yml
+  #  - include: tasks/nginx.yml
     - include: tasks/php.yml
     - include: tasks/nodejs.yml
     - include: tasks/composer.yml
     - include: tasks/mysql.yml
     - include: tasks/memcached.yml
-    - include: tasks/varnish.yml
+  #  - include: tasks/varnish.yml
   #  - include: tasks/drupal.yml
     - include: tasks/phpmyadmin.yml
   #  - include: tasks/elasticsearch.yml
