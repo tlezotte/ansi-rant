@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-defaultbox="chef/centos-6.6"
+defaultbox="thinktainer/centos-6_6-x64"
 defaultuser="vagrant"
 defaultroot="/home/vagrant"
 
@@ -44,7 +44,7 @@ fi
 # set default is enter is pressed
 if [ -z "$user" ];
 then
-    box=$defaultuser
+    user=$defaultuser
 fi
 #Switch user
 sed -i "" "s|default_user: vagrant|default_user: $user|" ansi-rant/playbook.yml
