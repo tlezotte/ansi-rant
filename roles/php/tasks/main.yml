@@ -23,3 +23,14 @@
   file:
     path="/var/lib/php/session"
     group={{ default_group }}
+
+- name: Creating phpinfo.php file
+  file:
+    path={{ default_home }}/www/html/phpinfo.php
+    state=touch
+
+- name: Generating phpinfo.php content
+  template:
+    src=templates/phpinfo.php.j2
+    dest={{ default_home }}/www/html/phpinfo.php
+    owner={{ default_user }} group={{ default_group }}

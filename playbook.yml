@@ -3,42 +3,29 @@
 # create password: python -c 'import crypt; print crypt.crypt("<password>", "<salt>")'
 - hosts: all
   sudo: true
-  vars:
-    server_name: localhost
-    timezone: America/Chicago
-    vagrant_share: /vagrant
-    sites_share: /sites
-    drupal_version: 7.36
-    phpmyadmin_version: 4.4.2
-    es_version: 1.5.1
-    default_user: vagrant
-    default_group: vagrant
-    default_home: /home/vagrant
-    vagrant_user: vagrant
-    vagrant_group: vagrant
-    vagrant_home: /home/vagrant
-    default_password: andwFlxe77c2A
-    default_password_plain: vagrant
-  handlers:
-    - name: restart apache
-      service: name=httpd state=reloaded
-    - name: restart mysqld
-      service: name=mysqld state=reloaded
-  pre_tasks:
-    - include: tasks/required.yml
-    - include: tasks/addusers.yml
-  tasks:
-    - include: tasks/apache.yml
-  #  - include: tasks/nginx.yml
-    - include: tasks/php.yml
-    - include: tasks/nodejs.yml
-    - include: tasks/composer.yml
-    - include: tasks/mysql.yml
-    - include: tasks/memcached.yml
-  #  - include: tasks/varnish.yml
-  #  - include: tasks/drupal.yml
-    - include: tasks/phpmyadmin.yml
-  #  - include: tasks/elasticsearch.yml
-  post_tasks:
-    - include: tasks/start_services.yml
+  roles:
+#    - apache
+#  handlers:
+#    - name: restart apache
+#      service: name=httpd state=reloaded
+#    - name: restart mysqld
+#      service: name=mysqld state=reloaded
+#  pre_tasks:
+#     - include: tasks/setup.yml
+#    - include: tasks/required.yml
+#    - include: tasks/addusers.yml
+#  tasks:
+#    - include: tasks/apache.yml
+#  #  - include: tasks/nginx.yml
+#    - include: tasks/php.yml
+#    - include: tasks/nodejs.yml
+#    - include: tasks/composer.yml
+#    - include: tasks/mysql.yml
+#    - include: tasks/memcached.yml
+#  #  - include: tasks/varnish.yml
+#  #  - include: tasks/drupal.yml
+#    - include: tasks/phpmyadmin.yml
+#  #  - include: tasks/elasticsearch.yml
+#  post_tasks:
+#    - include: tasks/start_services.yml
   

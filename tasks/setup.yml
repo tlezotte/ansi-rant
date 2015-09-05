@@ -1,0 +1,15 @@
+- name: "First time setup tasks"
+  hosts: all
+  remote_user: root
+  vars_prompt:
+    - name: "vagrantbox"
+      prompt: "Enter a Vagrant Box (http://bit.ly/rantboxes): "
+      default: "chef/centos-6.6"
+    - name: "defaultuser"
+      prompt: "Enter a usersname: "
+      default: "vagrant"
+    - name: "defaulthome"
+      prompt: "Enter users home directory: "
+      default: "/home/vagrant"
+#  roles:
+#    - setup

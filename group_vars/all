@@ -1,0 +1,18 @@
+---
+# Variables for all instances.
+
+server_name: localhost
+timezone: America/Chicago
+vagrant_share: /vagrant
+sites_share: /sites
+drupal_version: 7.36
+phpmyadmin_version: 4.4.2
+es_version: 1.5.1
+default_user: vagrant
+default_group: vagrant
+default_home: /home/vagrant
+vagrant_user: vagrant
+vagrant_group: vagrant
+vagrant_home: /home/vagrant
+default_password: andwFlxe77c2A
+default_password_plain: vagrant
