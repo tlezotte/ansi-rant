@@ -1,9 +1,0 @@
----
-- name: Restarting httpd service
-  service: name=httpd state=restarted
-
-- name: Restarting nginx service
-  service: name=nginx state=restarted
-
-- name: Restarting mysqld service
-  service: name=mysqld state=restarted

@@ -1,0 +1,5 @@
+---
+# Variables for all instances.
+
+server_name: localhost
+timezone: America/Chicago

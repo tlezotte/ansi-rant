@@ -1,7 +1,10 @@
 ---
 - name: Installing Apache httpd
-  yum: name=httpd state=present
-  
+  yum: name={{ item }} state=present
+  with_items:
+    - httpd
+    - libselinux-python
+
 - name: Generating httpd.conf file
   template: 
     src=templates/httpd.conf.j2 
@@ -23,17 +26,6 @@
     dest={{ default_home }}/www/html/index.html
     owner={{ default_user }} group={{ default_group }}
 
-- name: Creating phpinfo.php file
-  file:
-    path={{ default_home }}/www/html/phpinfo.php
-    state=touch
-
-- name: Generating phpinfo.php content
-  template:
-    src=templates/phpinfo.php.j2
-    dest={{ default_home }}/www/html/phpinfo.php
-    owner={{ default_user }} group={{ default_group }}
-
 - name: Copy favicon to document_root
   sudo: yes
   sudo_user: "{{ default_user }}"
@@ -43,4 +35,4 @@
   register: new_archive
 
 - name: Start httpd service
-  service: name=httpd state=reloaded
+  service: name=httpd state=reloaded enabled=yes
