@@ -1,5 +1,3 @@
-<?php
-
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -212,21 +210,7 @@
  *   );
  * @endcode
  */
-$databases = array (
-  'default' =>
-  array (
-    'default' =>
-    array (
-      'database' => 'drupal',
-      'username' => 'drupal',
-      'password' => 'root123',
-      'host' => 'localhost',
-      'port' => '',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);
+$databases = array();
 
 /**
  * Access control for update.php script.
@@ -258,7 +242,7 @@ $update_free_access = FALSE;
  *   $drupal_hash_salt = file_get_contents('/home/example/salt.txt');
  *
  */
-$drupal_hash_salt = 'M_RqtWjInuFj0aCgzHz1ANnKOQqcjm2Eu-A6cHotJ4g';
+$drupal_hash_salt = '';
 
 /**
  * Base URL (optional).
@@ -579,3 +563,5 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+
+$conf['drupal_http_request_fails'] = FALSE;
