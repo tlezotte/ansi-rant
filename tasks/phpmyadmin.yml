@@ -23,6 +23,17 @@
     dest="{{ default_home }}{{ web_home }}/phpMyAdmin"
     state=link
 
+- name: Creating config.inc.php file
+  file:
+    path="{{ default_home }}{{ web_home }}/phpMyAdmin/config.inc.php"
+    state=touch
+
+- name: Generating config.inc.php content
+  template:
+    src=templates/config.inc.php.j2
+    dest="{{ default_home }}{{ web_home }}/phpMyAdmin/config.inc.php"
+    owner={{ default_user }} group={{ default_group }}
+
 - name: Removing phpMyAdmin archive file
   file:
     path="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
