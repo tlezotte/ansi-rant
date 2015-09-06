@@ -289,7 +289,7 @@ UseCanonicalName Off
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "{{ default_home }}/www/html"
+DocumentRoot "{{ default_home }}{{ web_home }}"
 
 #
 # Each directory to which Apache has access can be configured with respect
@@ -314,7 +314,7 @@ DocumentRoot "{{ default_home }}/www/html"
 #
 # This should be changed to whatever you set DocumentRoot to.
 #
-<Directory "{{ default_home }}/www/html">
+<Directory "{{ default_home }}{{ web_home }}">
 
 #
 # Possible values for the Options directive are "None", "All",
@@ -548,9 +548,9 @@ ServerSignature On
 # We include the /icons/ alias for FancyIndexed directory listings.  If you
 # do not use FancyIndexing, you may comment this out.
 #
-Alias /icons/ "{{ default_home }}/www/html/icons/"
+Alias /icons/ "{{ default_home }}{{ web_home }}/icons/"
 
-<Directory "{{ default_home }}/www/html/icons">
+<Directory "{{ default_home }}{{ web_home }}/icons">
     Options Indexes MultiViews FollowSymLinks
     AllowOverride None
     Order allow,deny
@@ -573,13 +573,13 @@ Alias /icons/ "{{ default_home }}/www/html/icons/"
 # The same rules about trailing "/" apply to ScriptAlias directives as to
 # Alias.
 #
-ScriptAlias /cgi-bin/ "{{ default_home }}/www/html/cgi-bin/"
+ScriptAlias /cgi-bin/ "{{ default_home }}{{ web_home }}/cgi-bin/"
 
 #
 # "{{ default_home }}/www/cgi-bin" should be changed to whatever your ScriptAliased
 # CGI directory exists, if you have that configured.
 #
-<Directory "{{ default_home }}/www/html/cgi-bin">
+<Directory "{{ default_home }}{{ web_home }}/cgi-bin">
     AllowOverride None
     Options None
     Order allow,deny
@@ -852,11 +852,11 @@ AddOutputFilter INCLUDES .shtml
 # copying them to /your/include/path/, even on a per-VirtualHost basis.
 #
 
-Alias /error/ "{{ default_home }}/www/html/error/"
+Alias /error/ "{{ default_home }}{{ web_home }}/error/"
 
 <IfModule mod_negotiation.c>
 <IfModule mod_include.c>
-    <Directory "{{ default_home }}/www/html/error">
+    <Directory "{{ default_home }}{{ web_home }}/error">
         AllowOverride None
         Options IncludesNoExec
         AddOutputFilter Includes html
