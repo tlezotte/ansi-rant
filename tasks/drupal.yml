@@ -19,10 +19,10 @@
     src=templates/settings.php.j2
     dest="{{ default_home }}{{ web_home }}/drupal/sites/default/settings.php"
     owner={{ default_user }} group={{ default_group }}
-    mode=0777
+    mode=0666
 
 - name: Creating drupal MySQL database
   mysql_db: name=drupal state=present
 
 - name: Creating drupal MySQL username
-  mysql_user: name={{ drupal_user }} password={{ default_password_plain }} priv=drupal.*:ALL,GRANT state=present
+  mysql_user: name={{ drupal_user }} password={{ drupal_password }} priv=drupal.*:ALL,GRANT state=present
