@@ -13,6 +13,7 @@
     - php-xmlrpc
     - php-pecl-memcache
     - php-fpm
+    - mod-proxy-fcgi
 
 - name: Configuring php.ini file
   template:
@@ -23,3 +24,6 @@
   file:
     path="/var/lib/php/session"
     group={{ default_group }}
+
+- name: Start php-fpm service
+  service: name=php-fpm state=started enabled=yes
