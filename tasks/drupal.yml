@@ -9,17 +9,17 @@
     owner={{ default_user }} group={{ default_group }}
     mode=0777
 
-- name: Creating settings.php file
-  file:
-    path="{{ default_home }}{{ web_home }}/drupal/sites/default/settings.php"
-    state=touch
+#- name: Creating settings.php file
+#  file:
+#    path="{{ default_home }}{{ web_home }}/drupal/sites/default/settings.php"
+#    state=touch
 
-- name: Generating settings.php content
-  template:
-    src=templates/settings.php.j2
-    dest="{{ default_home }}{{ web_home }}/drupal/sites/default/settings.php"
-    owner={{ default_user }} group={{ default_group }}
-    mode=0666
+#- name: Generating settings.php content
+#  template:
+#    src=templates/settings.php.j2
+#    dest="{{ default_home }}{{ web_home }}/drupal/sites/default/settings.php"
+#    owner={{ default_user }} group={{ default_group }}
+#    mode=0666
 
 - name: Creating drupal MySQL database
   mysql_db: name=drupal state=present
