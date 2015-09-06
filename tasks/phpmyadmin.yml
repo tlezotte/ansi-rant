@@ -3,7 +3,7 @@
   sudo: yes
   #sudo_user: "{{ deploy_user }}"
   get_url:
-    url="http://iweb.dl.sourceforge.net/project/phpmyadmin/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
+    url="https://files.phpmyadmin.net/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
     dest="/tmp"
   register: new_archive
 
