@@ -10,6 +10,7 @@
     sites_share: /sites
     drupal_version: 7.39
     drupal_user: drupal
+    drupal_password: vagrant
     phpmyadmin_version: 4.0.10.10
     es_version: 1.7.1
     default_user: vagrant
@@ -33,12 +34,12 @@
     - include: tasks/apache.yml
     - include: tasks/nginx.yml
     - include: tasks/php.yml
-#    - include: tasks/nodejs.yml
+    - include: tasks/nodejs.yml
     - include: tasks/composer.yml
     - include: tasks/mysql.yml
 #    - include: tasks/memcached.yml
-#  #  - include: tasks/varnish.yml
-#  #  - include: tasks/drupal.yml
+#    - include: tasks/varnish.yml
+    - include: tasks/drupal.yml
     - include: tasks/phpmyadmin.yml
 #  #  - include: tasks/elasticsearch.yml
   post_tasks:
