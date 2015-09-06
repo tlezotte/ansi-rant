@@ -3,15 +3,28 @@
 # create password: python -c 'import crypt; print crypt.crypt("<password>", "<salt>")'
 - hosts: all
   sudo: true
-  roles:
-#    - apache
+  vars:
+    server_name: localhost
+    timezone: America/Chicago
+    vagrant_share: /vagrant
+    sites_share: /sites
+    drupal_version: 7.39
+    phpmyadmin_version: 4.4.14
+    es_version: 1.7.1
+    default_user: vagrant
+    default_group: vagrant
+    default_home: /home/vagrant
+    vagrant_user: vagrant
+    vagrant_group: vagrant
+    vagrant_home: /home/vagrant
+    default_password: andwFlxe77c2A
+    default_password_plain: vagrant
   handlers:
     - name: restart apache
       service: name=httpd state=reloaded
     - name: restart mysqld
       service: name=mysqld state=reloaded
   pre_tasks:
-#     - include: tasks/setup.yml
     - include: tasks/required.yml
     - include: tasks/addusers.yml
   tasks:
