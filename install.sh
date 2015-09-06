@@ -8,14 +8,14 @@ defaultroot="/home/vagrant"
 
 clear
 
-echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
-read box
+#echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
+#read box
 
-echo -n "Create a users [$defaultuser]: "
-read user
+#echo -n "Create a users [$defaultuser]: "
+#read user
 
-echo -n "Enter users home directory [$defaultroot]: "
-read root
+#echo -n "Enter users home directory [$defaultroot]: "
+#read root
 
 
 #
@@ -26,6 +26,12 @@ if [ -z "$box" ];
 then
     box=$defaultbox
 fi
+# set box if arg $1 set
+if [ $# == 1 ];
+then
+    box=$1
+fi
+
 
 # split vagrant box string
 PROV=${box%/*}
