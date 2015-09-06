@@ -13,7 +13,7 @@
     - php-xmlrpc
     - php-pecl-memcache
     - php-fpm
-    - mod-proxy-fcgi
+    - mod_proxy_fcgi
 
 - name: Configuring php.ini file
   template:
