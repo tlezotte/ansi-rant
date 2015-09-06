@@ -5,27 +5,27 @@
   sudo: true
   roles:
 #    - apache
-#  handlers:
-#    - name: restart apache
-#      service: name=httpd state=reloaded
-#    - name: restart mysqld
-#      service: name=mysqld state=reloaded
-#  pre_tasks:
+  handlers:
+    - name: restart apache
+      service: name=httpd state=reloaded
+    - name: restart mysqld
+      service: name=mysqld state=reloaded
+  pre_tasks:
 #     - include: tasks/setup.yml
-#    - include: tasks/required.yml
-#    - include: tasks/addusers.yml
-#  tasks:
-#    - include: tasks/apache.yml
+    - include: tasks/required.yml
+    - include: tasks/addusers.yml
+  tasks:
+    - include: tasks/apache.yml
 #  #  - include: tasks/nginx.yml
-#    - include: tasks/php.yml
+    - include: tasks/php.yml
 #    - include: tasks/nodejs.yml
-#    - include: tasks/composer.yml
-#    - include: tasks/mysql.yml
+    - include: tasks/composer.yml
+    - include: tasks/mysql.yml
 #    - include: tasks/memcached.yml
 #  #  - include: tasks/varnish.yml
 #  #  - include: tasks/drupal.yml
-#    - include: tasks/phpmyadmin.yml
+    - include: tasks/phpmyadmin.yml
 #  #  - include: tasks/elasticsearch.yml
-#  post_tasks:
-#    - include: tasks/start_services.yml
+  post_tasks:
+    - include: tasks/start_services.yml
   
