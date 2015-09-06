@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "chef/centos-6.6"
+  config.vm.box = "geerlingguy/centos6"
   config.vm.network "forwarded_port", guest: 80, host: 8080 # httpd
   config.vm.network "forwarded_port", guest: 81, host: 8081 # nginx
 

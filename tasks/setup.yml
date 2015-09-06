@@ -4,7 +4,7 @@
   vars_prompt:
     - name: "vagrantbox"
       prompt: "Enter a Vagrant Box (http://bit.ly/rantboxes): "
-      default: "chef/centos-6.6"
+      default: "geerlingguy/centos6"
     - name: "defaultuser"
       prompt: "Enter a usersname: "
       default: "vagrant"
