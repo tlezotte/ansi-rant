@@ -26,20 +26,20 @@
             <div class="col-md-1 col-md-offset-2">
                 <a href="http://localhost:8080"><button type="button" class="btn btn-primary btn-sm btn-block">Apache</button></a>
                 <br>
-                <a href="http://localhost:8080/drupal"><button type="button" class="btn btn-sm btn-block">Drupal</button></a>
+                <a href="http://localhost:8080/drupal" target="_blank"><button type="button" class="btn btn-sm btn-block">Drupal</button></a>
                 <br>
-                <a href="http://localhost:8080/phpMyAdmin"><button type="button" class="btn btn-sm btn-block">phpMyAdmin</button></a>
+                <a href="http://localhost:8080/phpMyAdmin" target="_blank"><button type="button" class="btn btn-sm btn-block">phpMyAdmin</button></a>
                 <br>
-                <a href="http://localhost:8080/phpinfo.php"><button type="button" class="btn btn-sm btn-block">phpinfo</button></a>
+                <a href="http://localhost:8080/phpinfo.php" target="_blank"><button type="button" class="btn btn-sm btn-block">phpinfo</button></a>
             </div>
             <div class="col-md-1">
                 <a href="http://localhost:8081"><button type="button" class="btn btn-primary btn-sm btn-block">Nginx</button></a>
                 <br>
-                <a href="http://localhost:8081/drupal"><button type="button" class="btn btn-sm btn-block">Drupal</button></a>
+                <a href="http://localhost:8081/drupal" target="_blank"><button type="button" class="btn btn-sm btn-block">Drupal</button></a>
                 <br>
-                <a href="http://localhost:8081/phpMyAdmin"><button type="button" class="btn btn-sm btn-block">phpMyAdmin</button></a>
+                <a href="http://localhost:8081/phpMyAdmin" target="_blank"><button type="button" class="btn btn-sm btn-block">phpMyAdmin</button></a>
                 <br>
-                <a href="http://localhost:8081/phpinfo.php"><button type="button" class="btn btn-sm btn-block">phpinfo</button></a>
+                <a href="http://localhost:8081/phpinfo.php" target="_blank"><button type="button" class="btn btn-sm btn-block">phpinfo</button></a>
             </div>
             <div class="col-md-5">
                 <table class="table table-bordered table-hover">
@@ -66,6 +66,12 @@
                     </tr>
                     <tr>
                         <td><strong>Drupal:</strong></td><td>{{ drupal_version }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drupal Password:</strong></td><td>{{ default_password_plain }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Drupal User:</strong></td><td>{{ drupal_user }}</td>
                     </tr>
                     <tr>
                         <td><strong>phpMyAdmin:</strong></td><td>{{ phpmyadmin_version }}</td>

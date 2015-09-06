@@ -4,7 +4,7 @@
   #sudo_user: "{{ deploy_user }}"
   get_url:
     url="https://files.phpmyadmin.net/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
-    dest="/tmp validate_certs=False"
+    dest="/tmp" validate_certs=False
   register: new_archive
 
 - name: Unarchive phpMyAdmin
@@ -12,15 +12,15 @@
   #sudo_user: "{{ deploy_user }}"
   unarchive:
     src="/tmp/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
-    dest={{ default_home }}/www/html
+    dest={{ default_home }}{{ web_home }}
     owner={{ default_user }} group={{ default_group }}
     copy=no
   when: new_archive|changed
 
 - name: Create phpMyAdmin link to version
   file:
-    src="{{ default_home }}/www/html/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
-    dest="{{ default_home }}/www/html/phpMyAdmin"
+    src="{{ default_home }}{{ web_home }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages"
+    dest="{{ default_home }}{{ web_home }}/phpMyAdmin"
     state=link
 
 - name: Removing phpMyAdmin archive file
