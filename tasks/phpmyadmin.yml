@@ -4,7 +4,7 @@
   #sudo_user: "{{ deploy_user }}"
   get_url:
     url="https://files.phpmyadmin.net/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-all-languages.tar.gz"
-    dest="/tmp"
+    dest="/tmp validate_certs=False"
   register: new_archive
 
 - name: Unarchive phpMyAdmin
