@@ -1,0 +1,29 @@
+---
+- name: Download Solr
+  sudo: yes
+  #sudo_user: "vagrant"
+  get_url:
+    url="http://www.us.apache.org/dist//lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz"
+    dest="/tmp"
+  register: new_archive
+
+- name: Unarchive Solr
+  sudo: yes
+  #sudo_user: "{{ default_user }}"
+  unarchive:
+    src="/tmp/solr-{{ solr_version }}.tgz"
+    dest="{{ default_home }}"
+    owner={{ default_user }} group={{ default_group }}
+    copy=no
+  when: new_archive|changed
+
+- name: Create Solr link to version
+  file:
+    src="{{ default_home }}/solr-{{ solr_version }}"
+    dest="{{ default_home }}/solr"
+    state=link
+  
+- name: Removing Solr archive file
+  file:
+    path="/tmp/solr-{{ solr_version }}.tgz"
+    state=absent
