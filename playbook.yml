@@ -12,6 +12,7 @@
     drupal_user: drupal
     drupal_password: vagrant
     phpmyadmin_version: 4.0.10.10
+    solr_version: 5.3.0
     es_version: 1.7.1
     default_user: vagrant
     default_group: vagrant
@@ -41,7 +42,7 @@
 #    - include: tasks/varnish.yml
     - include: tasks/drupal.yml
     - include: tasks/phpmyadmin.yml
+    - include: tasks/solr.yml
 #  #  - include: tasks/elasticsearch.yml
   post_tasks:
     - include: tasks/start_services.yml
-  
