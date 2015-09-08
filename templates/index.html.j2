@@ -65,6 +65,9 @@
                         <td><strong>Default Password:</strong></td><td>{{ default_password_plain }}</td>
                     </tr>
                     <tr>
+                        <td><strong>HTTP Root:</strong></td><td>{{ default_home }}{{ web_home }}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Drupal:</strong></td><td>{{ drupal_version }}</td>
                     </tr>
                     <tr>
@@ -76,9 +79,11 @@
                     <tr>
                         <td><strong>phpMyAdmin:</strong></td><td>{{ phpmyadmin_version }}</td>
                     </tr>
+                    <!--
                     <tr>
                         <td><strong>ElasticSearch:</strong></td><td>{{ es_version }}</td>
                     </tr>
+                    -->
                 </table>
             </div>
         </div>
