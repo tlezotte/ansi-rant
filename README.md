@@ -1,7 +1,7 @@
 ## ANSIbile - vagRANT
   
 ### How to run ansi-rant
-> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh 
+> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh [box]
   
 ### What does the INSTALL.SH script do?
 1. Installs [Homebrew](http://brew.sh/) and [Cask](http://caskroom.io/)
@@ -17,10 +17,12 @@
 Ansible will setup your new VM the same every time. Ansi-rant installs and setup the following.  
   
 1. Adds a default user
-2. Installs and configures Apache
-3. Installs PHP
-4. Installs and configures Drupal
-5. Installs and configures phpMyAdmin
-6. Installs ElasticSearch
-7. Installs Memcached
-8. Installs Varnish
+2. Installs and configures [Apache HTTPD](http://httpd.apache.org)
+3. Installs [PHP](http://php.net)
+4. Installs and configures [Drupal](https://www.drupal.org)
+5. Installs and configures [phpMyAdmin](https://www.phpmyadmin.net)
+6. Installs [MySQL](http://www.mysql.com)
+7. Installs [Composer](https://getcomposer.org)
+8. Installs [Drush](http://www.drush.org)
+9. Installs [NodeJS](https://nodejs.org)
+10. Install [Gulp](http://gulpjs.com/)
