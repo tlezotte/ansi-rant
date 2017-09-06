@@ -11,9 +11,12 @@
     state: present
   with_items:
     - epel-release
-    - libselinux-python
     - ansible
     - MySQL-python
+    - sqlite
+    - python
+    - libselinux-python
+    - libyaml
 
 - name: Generating Ansible hosts file
   template:

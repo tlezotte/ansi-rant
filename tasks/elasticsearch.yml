@@ -1,15 +1,15 @@
 ---
 - name: Download ElasticSearch
-  sudo: yes
-  #sudo_user: "vagrant"
+  become: yes
+  #become_user: "vagrant"
   get_url:
     url: "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-{{ es_version }}.tar.gz"
     dest: "/tmp"
   register: new_archive
 
 - name: Unarchive ElasticSearch
-  sudo: yes
-  #sudo_user: "{{ default_user }}"
+  become: yes
+  #become_user: "{{ default_user }}"
   unarchive:
     src: "/tmp/elasticsearch-{{ es_version }}.tar.gz"
     dest: "{{ default_home }}"

@@ -2,7 +2,7 @@
 # ansible-playbook /vagrant/playbook.yml --connection=local
 # create password: python -c 'import crypt; print crypt.crypt("<password>", "<salt>")'
 - hosts: all
-  sudo: true
+  become: true
   vars:
     server_name: localhost
     timezone: America/Chicago
