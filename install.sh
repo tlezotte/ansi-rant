@@ -1,36 +1,50 @@
 #!/bin/bash
 
 
-defaultbox="thinktainer/centos-6_6-x64"
+defaultbox="iamseth/rhel-7.3"
 defaultuser="vagrant"
 defaultroot="/home/vagrant"
 
 
 clear
 
-#echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
-#read box
+# process arguments
+while getopts d option
+do
+ case "${option}"
+ in
+    d) DEFAULT=true;;
+ esac
+done
 
-#echo -n "Create a users [$defaultuser]: "
-#read user
 
-#echo -n "Enter users home directory [$defaultroot]: "
-#read root
-
-
-#
-# -- box section --
-#
-# set default is enter is pressed
-if [ -z "$box" ];
-then
+# set application variables
+if [ $DEFAULT ]; then
+    # settings from uesr prompts
     box=$defaultbox
-fi
-# set box if arg $1 set
-if [ $# == 1 ];
-then
+    user=$defaultuser
+    root=$defaultroot
+elif [ "$#" -eq 3 ]; then
+    # settings from command line
     box=$1
+    user=$2
+    root=$3    
+elif [ "$#" -ne 3 ]; then
+    echo -n "Enter a Vagrant Box (http://bit.ly/rantboxes) [$defaultbox]: "
+    read box
+
+    echo -n "Create a users [$defaultuser]: "
+    read user
+
+    echo -n "Enter users home directory [$defaultroot]: "
+    read root
+
+    # settings from uesr selecting defaults
+    [ -z "$box" ] && box=$defaultbox
+    [ -z "$user" ] && user=$defaultuser
+    [ -z "$root" ] && root=$defaultroot
 fi
+
 
 
 # split vagrant box string
@@ -47,11 +61,6 @@ fi
 #
 # -- user section --
 #
-# set default is enter is pressed
-if [ -z "$user" ];
-then
-    user=$defaultuser
-fi
 #Switch user
 sed -i "" "s|default_user: vagrant|default_user: $user|" ansi-rant/playbook.yml
 sed -i "" "s|default_group: vagrant|default_group: $user|" ansi-rant/playbook.yml
@@ -59,11 +68,6 @@ sed -i "" "s|default_group: vagrant|default_group: $user|" ansi-rant/playbook.ym
 #
 # -- root section --
 #
-# set default is enter is pressed
-if [ -z "$root" ];
-then
-    root=$defaultroot
-fi
 #Switch software root
 sed -i "" "s|default_home: /home/vagrant|default_home: $root|" ansi-rant/playbook.yml
 
@@ -95,7 +99,7 @@ fi
 
 if [ ! -d "/Applications/VirtualBox.app" ];
 then
-    brew cask install virtualbox
+    brew cask install virtualbox vagrant-manager
 fi
 
 brew cleanup

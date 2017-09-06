@@ -6,7 +6,9 @@
 #    - ip6tables
 
 - name: Installing required packages
-  yum: name={{ item }} state=present
+  yum: 
+    name: "{{ item }}"
+    state: present
   with_items:
     - epel-release
     - libselinux-python
@@ -15,22 +17,23 @@
 
 - name: Generating Ansible hosts file
   template:
-    src=templates/ansible_hosts.j2
-    dest=/etc/ansible/hosts
+    src: "templates/ansible_hosts.j2"
+    dest: "/etc/ansible/hosts"
 
 - name: Generating bash_profile file
   template:
-    src=templates/bash_profile.j2
-    dest={{ vagrant_home }}/.bash_profile
-    owner={{ vagrant_user }} group={{ vagrant_group }}
+    src: "templates/bash_profile.j2"
+    dest: "{{ vagrant_home }}/.bash_profile"
+    owner: "{{ vagrant_user }}"
+    group: "{{ vagrant_group }}"
 
 - name: Remove default localtime file
   file:
-    path="/etc/localtime"
-    state=absent
+    path: "/etc/localtime"
+    state: absent
 
 - name: Link to localtime file
   file:
-    src="/usr/share/zoneinfo/{{ timezone }}"
-    dest="/etc/localtime"
-    state=link
+    src: "/usr/share/zoneinfo/{{ timezone }}"
+    dest: "/etc/localtime"
+    state: link

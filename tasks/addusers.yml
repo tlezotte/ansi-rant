@@ -1,23 +1,24 @@
 ---
 - name: Create users home directory
   file:
-    path="{{ default_home }}"
-    state=directory
-    owner={{ default_user }} group={{ default_group }}
-    mode=0775
+    path: "{{ default_home }}"
+    state: directory
+    owner: "{{ default_user }}"
+    group: "{{ default_group }}"
+    mode: 0775
 
 - name: Create default group
   group:
-    name={{ default_group }}
-    state=present
+    name: "{{ default_group }}"
+    state: present
   
 - name: Create default user
   user:
-    name={{ default_user }}
-    group={{ default_group }}
-    home={{ default_home }}
-    shell=/bin/bash
-    password={{ default_password }}
+    name: "{{ default_user }}"
+    group: "{{ default_group }}"
+    home: "{{ default_home }}"
+    shell: "/bin/bash"
+    password: "{{ default_password }}"
 
 #- name: Change ownership user home
 #  shell: mkdir -p {{ default_home }}
@@ -26,7 +27,9 @@
 
 - name: Copy default bash_profile
   template:
-    src=templates/bash_profile.j2
-    dest={{ default_home }}/.bash_profile
-    owner={{ default_user }} group={{ default_group }} mode=0755
+    src: "templates/bash_profile.j2"
+    dest: "{{ default_home }}/.bash_profile"
+    owner: "{{ default_user }}"
+    group: "{{ default_group }}"
+    mode: 0755
     
