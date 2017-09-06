@@ -3,7 +3,7 @@
   sudo: yes
   #sudo_user: "vagrant"
   get_url:
-    url="http://www.us.apache.org/dist//lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz"
+    url="http://apache.claz.org/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz"
     dest="/tmp"
   register: new_archive
 

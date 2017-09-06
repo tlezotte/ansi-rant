@@ -8,12 +8,12 @@
     timezone: America/Chicago
     vagrant_share: /vagrant
     sites_share: /sites
-    drupal_version: 7.39
+    drupal_version: 8.3.7
     drupal_user: drupal
     drupal_password: vagrant
-    phpmyadmin_version: 4.0.10.10
-    solr_version: 5.3.0
-    es_version: 1.7.1
+    phpmyadmin_version: 4.7.4
+    solr_version: 6.6.0
+    es_version: 5.5.2
     default_user: vagrant
     default_group: vagrant
     default_home: /home/vagrant
@@ -43,6 +43,6 @@
     - include: tasks/drupal.yml
     - include: tasks/phpmyadmin.yml
     - include: tasks/solr.yml
-#  #  - include: tasks/elasticsearch.yml
+    - include: tasks/elasticsearch.yml
   post_tasks:
     - include: tasks/start_services.yml

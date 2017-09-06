@@ -1,13 +1,14 @@
 ---
 - name: Downloading drupal
-  shell: /home/vagrant/.composer/vendor/bin/drush dl drupal --drupal-project-rename=drupal --destination={{ default_home }}{{ web_home }}
+  shell: "/home/vagrant/.composer/vendor/bin/drush dl drupal --drupal-project-rename=drupal --destination={{ default_home }}{{ web_home }}""
 
 - name: Create files directory
   file:
-    path="{{ default_home }}{{ web_home }}/drupal/sites/default/files"
-    state=directory
-    owner={{ default_user }} group={{ default_group }}
-    mode=0777
+    path: "{{ default_home }}{{ web_home }}/drupal/sites/default/files"
+    state: directory
+    owner: "{{ default_user }}"
+    group: "{{ default_group }}"
+    mode: 0777
 
 #- name: Creating settings.php file
 #  file:
@@ -22,7 +23,13 @@
 #    mode=0666
 
 - name: Creating drupal MySQL database
-  mysql_db: name=drupal state=present
+  mysql_db: 
+    name: drupal
+    state: present
 
 - name: Creating drupal MySQL username
-  mysql_user: name={{ drupal_user }} password={{ drupal_password }} priv=drupal.*:ALL,GRANT state=present
+  mysql_user: 
+    name: "{{ drupal_user }}"
+    password: "{{ drupal_password }}"
+    priv: "drupal.*:ALL,GRANT"
+    state: present
