@@ -12,9 +12,9 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "iamseth/rhel-7.3"
+  config.vm.box = "BOXNAME"
   config.vm.network "forwarded_port", guest: 80, host: 8080 # httpd
-  config.vm.network "forwarded_port", guest: 81, host: 8081 # nginx
+  config.vm.network "forwarded_port", guest: 443, host: 8443 # nginx
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "playbook.yml"
