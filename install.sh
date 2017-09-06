@@ -104,9 +104,12 @@ fi
 
 brew cleanup
 
-# Rename git directory to centos6
+# Rename git directory to box name
 mv ansi-rant $OS
 cd $OS
+
+# Update Vagrantfile
+sed -i "" "s|BOXNAME|$box|" Vagrantfile
 
 # Start installing
 vagrant up

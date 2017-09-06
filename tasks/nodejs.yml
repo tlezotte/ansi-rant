@@ -12,4 +12,7 @@
     name: "{{ item }}"
     global: yes
   with_items:
-    - gulp
+    - jsdoc
+    - kss
+    - npm-check
+    - typescript
