@@ -1,15 +1,15 @@
 ---
 - name: Download Solr
-  sudo: yes
-  #sudo_user: "vagrant"
+  become: yes
+  #become_user: "vagrant"
   get_url:
     url="http://apache.claz.org/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz"
     dest="/tmp"
   register: new_archive
 
 - name: Unarchive Solr
-  sudo: yes
-  #sudo_user: "{{ default_user }}"
+  become: yes
+  #become_user: "{{ default_user }}"
   unarchive:
     src="/tmp/solr-{{ solr_version }}.tgz"
     dest="{{ default_home }}"
