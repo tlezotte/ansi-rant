@@ -11,8 +11,8 @@
 
 - name: Copy default www (cgi-bin,icons,error,html)
   shell: "cp -rL /var/www {{ default_home }}"
-  sudo: yes
-  sudo_user: "{{ default_user }}"
+  become: yes
+  become_user: "{{ default_user }}"
 
 - name: Creating index.html file
   file:
@@ -38,8 +38,8 @@
     owner: "{{ default_user }} group={{ default_group }}"
 
 - name: Copy favicon to document_root
-  sudo: yes
-  sudo_user: "{{ default_user }}"
+  become: yes
+  become_user: "{{ default_user }}"
   get_url:
     url: "https://raw.githubusercontent.com/tlezotte/ansi-rant/master/assets/favicon.ico"
     dest: "{{ default_home }}{{ web_home }}"

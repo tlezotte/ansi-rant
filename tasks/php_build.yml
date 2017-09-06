@@ -1,15 +1,15 @@
 ---
 - name: Download php source
-  sudo: yes
-  #sudo_user: "{{ deploy_user }}"
+  become: yes
+  #become_user: "{{ deploy_user }}"
   get_url:
     url: "http://php.net/distributions/php-{{ php_source }}.tar.gz"
     dest: "/tmp"
   register: new_archive
 
 - name: Unarchive php source
-  sudo: yes
-  #sudo_user: "{{ deploy_user }}"
+  become: yes
+  #become_user: "{{ deploy_user }}"
   unarchive:
     src: "/tmp/php-{{ php_source }}.tar.gz"
     dest: "{{ build_root }}"

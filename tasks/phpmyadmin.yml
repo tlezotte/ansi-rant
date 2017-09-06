@@ -1,15 +1,16 @@
 ---
 - name: Download phpMyAdmin
-  sudo: yes
-  #sudo_user: "{{ deploy_user }}"
+  become: yes
+  #become_user: "{{ deploy_user }}"
   get_url:
     url: "https://files.phpmyadmin.net/phpMyAdmin/{{ phpmyadmin_version }}/phpMyAdmin-{{ phpmyadmin_version }}-english.tar.gz"
-    dest: "/tmp" validate_certs=False
+    dest: "/tmp"
+    validate_certs: False
   register: new_archive
 
 - name: Unarchive phpMyAdmin
-  sudo: yes
-  #sudo_user: "{{ deploy_user }}"
+  become: yes
+  #become_user: "{{ deploy_user }}"
   unarchive:
     src: "/tmp/phpMyAdmin-{{ phpmyadmin_version }}-english.tar.gz"
     dest: "{{ default_home }}{{ web_home }}"
