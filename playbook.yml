@@ -23,6 +23,8 @@
     vagrant_home: /home/vagrant
     default_password: andwFlxe77c2A
     default_password_plain: vagrant
+    java_version: 1.8.0
+    java_package: java-{{ java_version }}-openjdk
   handlers:
     - name: restart apache
       service: name=httpd state=reloaded

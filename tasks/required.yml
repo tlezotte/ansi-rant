@@ -5,6 +5,23 @@
 #    - iptables
 #    - ip6tables
 
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Get variables related to RHEL Subscriptions
+  include_vars:
+    file: "~/.ansi-rant/subscription.yml"
+  when: ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Subscribe to software repositories
+  redhat_subscription:
+    state: present
+    username: "{{ sub_username }}"
+    password: "{{ sub_password }}"
+    autosubscribe: true
+  when: ansible_distribution == 'Red Hat Enterprise Linux'
+
 - name: Installing required packages
   yum: 
     name: "{{ item }}"
@@ -12,11 +29,13 @@
   with_items:
     - epel-release
     - ansible
-    - MySQL-python
     - sqlite
     - python
+    - MySQL-python
     - libselinux-python
     - libyaml
+    - {{ java_package }}
+    - {{ java_package}}_devel
 
 - name: Generating Ansible hosts file
   template:
