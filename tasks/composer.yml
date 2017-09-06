@@ -1,17 +1,20 @@
 ---
 - name: Installing composer
-  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
+  shell: "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin  creates=/usr/local/bin/composer"
   tags: composer
 
 - name: Rename composer.phar to composer
-  shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+  shell: "mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer"
   tags: composer
 
 - name: Make composer executable
-  file: path=/usr/local/bin/composer mode=a+x state=file
+  file: 
+    path: "/usr/local/bin/composer"
+    mode: a+x
+    state: file
   tags: composer
 
 - name: Installing drush with Composer
-  shell: /usr/local/bin/composer global require drush/drush:7.*
+  shell: "/usr/local/bin/composer global require drush/drush:7.*"
   sudo: yes
   sudo_user: "{{ default_user }}"

@@ -6,28 +6,33 @@
     - mysql
 
 - name: Start MySQLd service
-  service: name=mysqld state=started enabled=yes
+  service: 
+    name: mysqld
+    state: started
+    enabled: yes
 
 - name: Creating Databases
-  mysql_db: name={{ item }} state=present
+  mysql_db: 
+    name: "{{ item }}"
+    state: present
   with_items:
     - drupal
 
 - name: Setup User Accounts
   mysql_user:
-    name=root
-    password={{ default_password_plain }}
-    host=localhost
-    state=present
+    name: "root"
+    password: "{{ default_password_plain }}"
+    host: "localhost"
+    state: present
   mysql_user:
-    name={{ default_user }}
-    password={{ default_password_plain }}
-    host=*
-    priv=*.*:ALL,GRANT
-    state=present
+    name: "{{ default_user }}"
+    password: "{{ default_password_plain }}"
+    host: "*"
+    priv: "*.*:ALL,GRANT"
+    state: present
   mysql_user:
-    name=drupal
-    password={{ default_password_plain }}
-    host=*
-    priv=drupal.*:ALL,GRANT
-    state=present
+    name: "drupal"
+    password: "{{ default_password_plain }}"
+    host: "*"
+    priv: "drupal.*:ALL,GRANT"
+    state: present
