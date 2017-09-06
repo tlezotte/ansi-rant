@@ -3,21 +3,23 @@
   sudo: yes
   #sudo_user: "{{ deploy_user }}"
   get_url:
-    url="http://php.net/distributions/php-{{ php_source }}.tar.gz"
-    dest="/tmp"
+    url: "http://php.net/distributions/php-{{ php_source }}.tar.gz"
+    dest: "/tmp"
   register: new_archive
 
 - name: Unarchive php source
   sudo: yes
   #sudo_user: "{{ deploy_user }}"
   unarchive:
-    src="/tmp/php-{{ php_source }}.tar.gz"
-    dest="{{ build_root }}"
-    copy=no
+    src: "/tmp/php-{{ php_source }}.tar.gz"
+    dest: "{{ build_root }}"
+    copy: no
   when: new_archive|changed
   
 - name: install httpd-devel
-  yum: name={{ item }} state=present
+  yum: 
+    name: "{{ item }}"
+    state: present
   with_items:
     - httpd-devel
     - libxml-devel
