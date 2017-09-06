@@ -1,20 +1,50 @@
 ---
-- name: Installing composer
-  shell: "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin  creates=/usr/local/bin/composer"
-  tags: composer
+- name: Is Composer Installed
+  stat: path={{ root_bin }}/composer
+  register: composer
+  tags:
+    - always
 
-- name: Rename composer.phar to composer
-  shell: "mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer"
-  tags: composer
+# Update Composer
+- name: Update Composer
+  shell: "{{ root_bin }}/composer self-update"
+  when: composer.stat.exists
+  tags:
+    - update
 
-- name: Make composer executable
-  file: 
-    path: "/usr/local/bin/composer"
-    mode: a+x
-    state: file
-  tags: composer
+# Download Composer installer
+- name: Download Composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: /tmp/composer-installer.php
+    mode: 0755
+  when: not composer.stat.exists
+  tags:
+    - install
 
-- name: Installing drush with Composer
-  shell: "/usr/local/bin/composer global require drush/drush:7.*"
-  sudo: yes
-  sudo_user: "{{ default_user }}"
+# Run Composer installer
+- name: Install Composer
+  command: php composer-installer.php --install-dir={{ root_bin }} --filename=composer
+  args:
+    chdir: /tmp
+  when: not composer.stat.exists
+  tags:
+    - install
+
+# Remove Composer installer file
+- name: Remove Composer Installer
+  file:
+    path: /tmp/composer-installer.php
+    state: absent
+  when: not composer.stat.exists
+  tags:
+    - install
+
+# Generate composer.json
+- name: Generating composer.json file
+  template:
+    src=composer.json.j2
+    dest={{ admin_home }}/.composer/composer.json
+  when: composer.stat.exists
+  tags:
+    - config

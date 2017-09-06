@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "geerlingguy/centos6"
+  config.vm.box = "iamseth/rhel-7.3"
   config.vm.network "forwarded_port", guest: 80, host: 8080 # httpd
   config.vm.network "forwarded_port", guest: 81, host: 8081 # nginx
 
@@ -75,7 +75,7 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for ***REMOVED*** information about their specific syntax and use.
   # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y apache2
+  #   become apt-get update
+  #   become apt-get install -y apache2
   # SHELL
 end

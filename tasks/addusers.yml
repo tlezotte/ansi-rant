@@ -22,8 +22,8 @@
 
 #- name: Change ownership user home
 #  shell: mkdir -p {{ default_home }}
-#  sudo: yes
-#  sudo_user: "{{ default_user }}"
+#  become: yes
+#  become_user: "{{ default_user }}"
 
 - name: Copy default bash_profile
   template:
