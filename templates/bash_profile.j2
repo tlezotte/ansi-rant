@@ -8,7 +8,7 @@ export CLICOLOR=1
 
 # -- set path --
 export PATH=$PATH:$HOME/bin:/home/{{ default_user }}/.composer/vendor/bin:/sbin:/etc/init.d
-export JAVA_HOME=/etc/alternatives/jre_1.7.0
+export JAVA_HOME=/usr/lib/jvm/java
 
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
@@ -60,4 +60,3 @@ print_before_the_prompt () {
       
 PROMPT_COMMAND=print_before_the_prompt
 PS1='-> '
-

@@ -1,13 +1,19 @@
 ## ANSIbile - vagRANT
   
 ### How to run ansi-rant
-> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh [box]
+##### Prompt user about Vagrant Box
+> cd < project directory >  
+> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh 
+##### Use default Vagrant Box settings
+> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh -d
+##### Provide Vagrant Box settings
+> git clone https://github.com/tlezotte/ansi-rant ; ansi-rant/install.sh [box] [user] [home dir]
   
 ### What does the INSTALL.SH script do?
 1. Installs [Homebrew](http://brew.sh/) and [Cask](http://caskroom.io/)
-2. Homebrew and Cask will install __ansible__, __vagrant__ and __virtualbox__
-3. Runs __vagrant up__ - This will run the Vagrantfile and run the Ansible playbook.yml
-4. Runs __vagrant ssh__ - This will log you into your new Vagrant VM
+2. Homebrew and Cask will install **ansible**, **vagrant** and **virtualbox**
+3. Runs **vagrant up** - This will run the Vagrantfile and run the Ansible playbook.yml
+4. Runs **vagrant ssh** - This will log you into your new Vagrant VM
   
 ### What does VAGRANT do?
 1. Installs a command only VM box (http://bit.ly/rantboxes)
@@ -25,4 +31,3 @@ Ansible will setup your new VM the same every time. Ansi-rant installs and setup
 7. Installs [Composer](https://getcomposer.org)
 8. Installs [Drush](http://www.drush.org)
 9. Installs [NodeJS](https://nodejs.org)
-10. Install [Gulp](http://gulpjs.com/)
