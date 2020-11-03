@@ -1,6 +1,7 @@
 ---
 # ansible-playbook /vagrant/playbook.yml --connection=local
 # create password: python -c 'import crypt; print crypt.crypt("<password>", "<salt>")'
+onetwothree
 - hosts: all
   become: true
   vars:
