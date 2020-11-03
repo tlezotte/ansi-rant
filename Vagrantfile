@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
   #   vb.memory = "1024"
   # end
   #
-  # View the documentation for the provider you are using for ***REMOVED***
+  # View the documentation for the provider you are using for more
   # information on available options.
 
   # Enable provisioning with ansible.
@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
-  # documentation for ***REMOVED*** information about their specific syntax and use.
+  # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
 #    yum-config-manager --enable centos-sclo-rh-testing
     yum -y update

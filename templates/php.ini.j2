@@ -16,7 +16,7 @@
 ; (otherwise in Windows)
 ; 6. The directory from the --with-config-file-path compile time option, or the
 ; Windows directory (C:\windows or C:\winnt)
-; See the PHP docs for ***REMOVED*** specific information.
+; See the PHP docs for more specific information.
 ; http://www.php.net/manual/en/configuration.file.php
 
 ; The syntax of the file is extremely simple.  Whitespace and Lines
@@ -79,7 +79,7 @@
 ; recommending using the production ini in production and testing environments.
 
 ; php.ini-development is very similar to its production variant, except it's
-; much ***REMOVED*** verbose when it comes to errors. We recommending using the
+; much more verbose when it comes to errors. We recommending using the
 ; development version only in development environments as errors shown to
 ; application users can inadvertently leak otherwise secure information.
 
@@ -91,7 +91,7 @@
 ;;;;;;;;;;;;;;;;;;;
 ; The following are all the settings which are different in either the production
 ; or development versions of the INIs with respect to PHP's default behavior.
-; Please see the actual settings later in the document for ***REMOVED*** details as to why
+; Please see the actual settings later in the document for more details as to why
 ; we recommend these changes in PHP's behavior.
 
 ; allow_call_time_pass_reference
@@ -833,7 +833,7 @@ enable_dl = Off
 
 ; cgi.fix_pathinfo provides *real* PATH_INFO/PATH_TRANSLATED support for CGI.  PHP's
 ; previous behaviour was to set PATH_TRANSLATED to SCRIPT_FILENAME, and to not grok
-; what PATH_INFO is.  For ***REMOVED*** information on PATH_INFO, see the cgi specs.  Setting
+; what PATH_INFO is.  For more information on PATH_INFO, see the cgi specs.  Setting
 ; this to 1 will cause PHP CGI to fix its paths to conform to the spec.  A setting
 ; of zero causes PHP to behave as before.  Default is 1.  You should fix your scripts
 ; to use SCRIPT_FILENAME rather than PATH_TRANSLATED.
@@ -1249,7 +1249,7 @@ session.save_handler = files
 ; /path, what this will do is use subdirectories N-levels deep, and
 ; store the session data in those directories.  This is useful if you
 ; or your OS have problems with lots of files in one directory, and is
-; a ***REMOVED*** efficient layout for servers that handle lots of sessions.
+; a more efficient layout for servers that handle lots of sessions.
 ;
 ; NOTE 1: PHP will not create this directory structure automatically.
 ;         You can use the script in the ext/session dir for that purpose.
@@ -1327,7 +1327,7 @@ session.gc_probability = 1
 ; when the session.gc_divisor value is 100 will give you approximately a 1% chance
 ; the gc will run on any give request. Increasing this value to 1000 will give you
 ; a 0.1% chance the gc will run on any give request. For high volume production servers,
-; this is a ***REMOVED*** efficient approach.
+; this is a more efficient approach.
 ; Default Value: 100
 ; Development Value: 1000
 ; Production Value: 1000
@@ -1365,7 +1365,7 @@ session.bug_compat_42 = Off
 
 ; This setting controls whether or not you are warned by PHP when initializing a
 ; session value into the global space. session.bug_compat_42 must be enabled before
-; these warnings can be issued by PHP. See the directive above for ***REMOVED*** information.
+; these warnings can be issued by PHP. See the directive above for more information.
 ; Default Value: On
 ; Development Value: On
 ; Production Value: Off
