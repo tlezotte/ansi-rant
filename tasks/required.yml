@@ -23,25 +23,19 @@
   when: ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Installing required packages
-  yum:
-    name:
-      - epel-release
-      - centos-release-scl
-      - gcc
-      - wget
-      - unzip
-      - tar
-      - xz
-      - git
-      - mail
-      - telnet
-      - python3
-      - MySQL-python
-      - libselinux-python
-      - libyaml
-      - "{{ java_package }}"
-      - "{{ java_package }}_devel"
-    state: latest
+  yum: 
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - epel-release
+    - ansible
+    - sqlite
+    - python
+    - MySQL-python
+    - libselinux-python
+    - libyaml
+    - {{ java_package }}
+    - {{ java_package}}_devel
 
 - name: Generating Ansible hosts file
   template:

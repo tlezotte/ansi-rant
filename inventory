@@ -1,2 +1,2 @@
-[server]
-localhost ansible_connection=local
+[servers]
+c6.mc.vanderbilt.edu

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-defaultbox="geerlingguy/centos7"
+defaultbox="iamseth/rhel-7.3"
 defaultuser="vagrant"
 defaultroot="/home/vagrant"
 
@@ -76,28 +76,33 @@ sed -i "" "s|default_home: /home/vagrant|default_home: $root|" ansi-rant/playboo
 # Install if we don't have it
 if test ! $(which brew); then
   echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" > /dev/null 2>&1
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Installing brew software
-ansible_check="brew info ansible | grep Error"
-if [ ! -d "/usr/local/Cellar/ansible" ];
+brew_check="brew info brew-cask | grep Error"
+if [ ${#brew_check} -ne 0 ];
 then
-    brew install ansible > /dev/null 2>&1
+    brew install brew-cask
+fi
+ansible_check="brew info ansible | grep Error"
+if [ ${#ansible_check} -ne 0 ];
+then
+    brew install ansible
 fi
 
 # Install cask software
-if [ ! -d "/usr/local/Caskroom/vagrant" ];
+if [ ! -d "/opt/homebrew-cask/Caskroom/vagrant" ];
 then
-    brew cask install vagrant vagrant-manager > /dev/null 2>&1
+    brew cask install vagrant
 fi
 
-if [ ! -d "/usr/local/Caskroom/virtualbox" ];
+if [ ! -d "/Applications/VirtualBox.app" ];
 then
-    brew cask install virtualbox > /dev/null 2>&1
+    brew cask install virtualbox vagrant-manager
 fi
 
-brew cleanup > /dev/null 2>&1
+brew cleanup
 
 # Rename git directory to box name
 mv ansi-rant $OS

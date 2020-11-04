@@ -1,16 +1,8 @@
 ---
-- name: Installing Apache
-  yum:
-    name:
-      - httpd24
-      - httpd24-apr
-      - httpd24-apr-util
-      - httpd24-httpd
-      - httpd24-httpd-tools
-      - httpd24-libnghttp2
-      - httpd24-mod_ssl
-      - httpd24-runtime
-    state: latest
+- name: Installing Apache httpd
+  yum: 
+    name: httpd 
+    state: present
   
 - name: Generating httpd.conf file
   template: 
