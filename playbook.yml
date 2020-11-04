@@ -1,0 +1,51 @@
+---
+# ansible-playbook /vagrant/playbook.yml --connection=local
+# create password: python -c 'import crypt; print crypt.crypt("<password>", "<salt>")'
+- hosts: all
+  become: true
+  vars:
+    server_name: localhost
+    timezone: America/Chicago
+    vagrant_share: /vagrant
+    sites_share: /sites
+    drupal_version: 8.9.0
+    drupal_user: drupal
+    drupal_password: vagrant
+    phpmyadmin_version: 5.0.2
+    solr_version: 8.5.1
+    es_version: 7.7.1
+    default_user: vagrant
+    default_group: vagrant
+    default_home: /home/vagrant
+    web_home: /www/html
+    vagrant_user: vagrant
+    vagrant_group: vagrant
+    vagrant_home: /home/vagrant
+    default_password: andwFlxe77c2A
+    default_password_plain: vagrant
+    java_version: 1.8.0
+    java_package: java-{{ java_version }}-openjdk
+  handlers:
+    - name: restart apache
+      service: name=httpd state=reloaded
+    - name: restart mysqld
+      service: name=mysqld state=reloaded
+  pre_tasks:
+    - include: tasks/required.yml
+    - include: tasks/addusers.yml
+  tasks:
+    - include: tasks/apache.yml
+    - include: tasks/nginx.yml
+    - include: tasks/php.yml
+    - include: tasks/nodejs.yml
+    - include: tasks/composer.yml
+    - include: tasks/mysql.yml
+#    - include: tasks/memcached.yml
+#    - include: tasks/varnish.yml
+    - include: tasks/drupal.yml
+    - include: tasks/phpmyadmin.yml
+    - include: tasks/solr.yml
+    - include: tasks/elasticsearch.yml
+  post_tasks:
+    - include: tasks/start_services.yml
+  
